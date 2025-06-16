@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwujtvhr0teug"]
+
+[ext_resource type="PackedScene" uid="uid://b7sb4u6hy88sr" path="res://Level/Models/corridor.tscn" id="1_dn3ay"]
+[ext_resource type="Script" uid="uid://cqqcq7kxbmt7c" path="res://Level/Script/level.gd" id="1_plb7s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dn3ay"]
+
+[node name="Level" type="Node3D" node_paths=PackedStringArray("cells")]
+script = ExtResource("1_plb7s")
+cells = [NodePath("Cells/cell_0"), NodePath("Cells/cell_1"), NodePath("Cells/cell_2"), NodePath("Cells/cell_3"), NodePath("Cells/cell_4"), NodePath("Cells/cell_5"), NodePath("Cells/cell_6"), NodePath("Cells/cell_7"), NodePath("Cells/cell_8")]
+
+[node name="Cells" type="Node3D" parent="."]
+
+[node name="cell_0" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="cell_1" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="cell_2" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="cell_3" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="cell_4" type="Marker3D" parent="Cells"]
+
+[node name="cell_5" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="cell_6" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="cell_7" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="cell_8" type="Marker3D" parent="Cells"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Corridors" type="Node3D" parent="."]
+
+[node name="Corridor" parent="Corridors" instance=ExtResource("1_dn3ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="Corridor2" type="Node3D" parent="Corridors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor2"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor3" type="Node3D" parent="Corridors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor3"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor4" type="Node3D" parent="Corridors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor4"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor5" type="Node3D" parent="Corridors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor5"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor6" type="Node3D" parent="Corridors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor6"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor7" type="Node3D" parent="Corridors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor7"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor8" type="Node3D" parent="Corridors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor8"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor9" type="Node3D" parent="Corridors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor9"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor10" type="Node3D" parent="Corridors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor10"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor11" type="Node3D" parent="Corridors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor11"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
+
+[node name="Corridor12" type="Node3D" parent="Corridors"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Corridors/Corridor12"]
+transform = Transform3D(0.499957, 0, 0, 0, 0.499957, 0, 0, 0, 0.999913, 0, 0, 0)
+mesh = SubResource("BoxMesh_dn3ay")
