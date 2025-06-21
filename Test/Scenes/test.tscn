@@ -39,6 +39,7 @@ environment = SubResource("Environment_kkq55")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+layers = 3
 shadow_enabled = true
 
 [node name="Plane" type="MeshInstance3D" parent="."]
@@ -54,6 +55,7 @@ shape = SubResource("BoxShape3D_xep22")
 [node name="Player" parent="." instance=ExtResource("1_xep22")]
 
 [node name="Objects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999956, -0.00935483, 0, 0.00935483, 0.999956, 0, 0, 0)
 
 [node name="cube1" type="MeshInstance3D" parent="Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.733, 0.5, 4)
