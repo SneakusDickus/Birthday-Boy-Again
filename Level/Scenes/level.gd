@@ -31,7 +31,6 @@ func _generate_level(max_number_rooms: int) -> void:
 	var room: Node3D = exist_rooms.pick_random()
 	var areas = room.areas
 	var adj_rooms = room.adjoining_rooms
-	#var key = adj_rooms.keys().pick_random()
 	
 	for key in adj_rooms:
 		if adj_rooms[key] != null:

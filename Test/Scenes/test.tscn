@@ -12,6 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_a2fa0")
 
 [sub_resource type="Environment" id="Environment_kkq55"]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_1wp82")
 tonemap_mode = 2
 glow_enabled = true
@@ -40,6 +41,8 @@ environment = SubResource("Environment_kkq55")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 layers = 3
+light_energy = 0.5
+light_cull_mask = 4294967291
 shadow_enabled = true
 
 [node name="Plane" type="MeshInstance3D" parent="."]

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmopmnqrnbyu2"
-path.s3tc="res://.godot/imported/Crates_and_barrels_glb_Crates_and_barrels_2.png-d845cb7f243600e51d8d16923fa324fd.s3tc.ctex"
+uid="uid://0uxxsv2kxy4s"
+path.s3tc="res://.godot/imported/Flare01.png-9d1efaa2c7661ead5d74e0b1027b472b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "c9d86bc0aae52b99b8170662aa679808"
-}
 
 [deps]
 
-source_file="res://Crates_and_barrels_glb_Crates_and_barrels_2.png"
-dest_files=["res://.godot/imported/Crates_and_barrels_glb_Crates_and_barrels_2.png-d845cb7f243600e51d8d16923fa324fd.s3tc.ctex"]
+source_file="res://Textures/Explosion/Flare01.png"
+dest_files=["res://.godot/imported/Flare01.png-9d1efaa2c7661ead5d74e0b1027b472b.s3tc.ctex"]
 
 [params]
 

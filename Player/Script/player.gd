@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var camera := $Head/MainCamera
 @onready var anim_tree := $Head/AnimationTree
 @onready var shoot_timer := $ShootDelay
+@onready var particle_fire := $Head/Vfx/Fire
 
 enum {
 	IDLE,
@@ -100,6 +101,7 @@ func update_tree():
 		shoot_timer.stop()
 	if Input.is_action_just_pressed("shoot") and can_shoot and current_ammo > 0:
 		anim_tree.set("parameters/fire/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		particle_fire.emitting = true
 		shoot()
 
 
@@ -114,7 +116,8 @@ func shoot():
 	
 	if result and "target" in result["collider"].name:
 		result["collider"].get_parent().take_shoot()
-		
+
+	
 	current_ammo -= 1
 	can_shoot = false
 	can_reload = true
