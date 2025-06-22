@@ -113,7 +113,9 @@ func shoot():
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_bodies = true
 	var result = space_state.intersect_ray(query)
-	
+	print(result)
+	if result and "Enemy" in result["collider"].name:
+		result["collider"].take_damage()
 	if result and "target" in result["collider"].name:
 		result["collider"].get_parent().take_shoot()
 

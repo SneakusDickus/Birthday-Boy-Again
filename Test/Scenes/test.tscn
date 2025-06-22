@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://blmkyykvhhacr"]
+[gd_scene load_steps=12 format=3 uid="uid://blmkyykvhhacr"]
 
 [ext_resource type="PackedScene" uid="uid://w8x5jw8avowq" path="res://Player/Scenes/player.tscn" id="1_xep22"]
 [ext_resource type="Script" uid="uid://cf7c21rwjgrhk" path="res://Test/Script/cube.gd" id="2_a2fa0"]
+[ext_resource type="PackedScene" uid="uid://d4e1b60mnp5lf" path="res://Enemies/EnemyPipe/Scene/enemy_pipe.tscn" id="3_1wp82"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a2fa0"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -12,7 +13,6 @@ sky_material = SubResource("ProceduralSkyMaterial_a2fa0")
 
 [sub_resource type="Environment" id="Environment_kkq55"]
 background_mode = 2
-background_energy_multiplier = 0.5
 sky = SubResource("Sky_1wp82")
 tonemap_mode = 2
 glow_enabled = true
@@ -41,7 +41,6 @@ environment = SubResource("Environment_kkq55")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 layers = 3
-light_energy = 0.5
 light_cull_mask = 4294967291
 shadow_enabled = true
 
@@ -89,3 +88,6 @@ script = ExtResource("2_a2fa0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/cube3/cube_collider_target"]
 shape = SubResource("BoxShape3D_a2fa0")
+
+[node name="EnemyPipe" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.442876, 3.85393, 5.15986)
