@@ -31,6 +31,8 @@ const JUMP_VELOCITY = 4.5
 
 
 func _ready():
+	PlayerData.player = self
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_rotation_y = rotation_degrees.y
@@ -105,25 +107,47 @@ func update_tree():
 		shoot()
 
 
-func shoot():
+func create_shoot_raycast() -> Dictionary:
 	var space_state = camera.get_world_3d().direct_space_state
 	var screen_center = get_viewport().size / 2
 	var origin = camera.project_ray_origin(screen_center)
 	var end = origin + camera.project_ray_normal(screen_center)*1000
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
-	query.collide_with_bodies = true
+	query.collision_mask = 0b10
+	query.collide_with_areas = true
 	var result = space_state.intersect_ray(query)
-	print(result)
-	if result and "Enemy" in result["collider"].name:
-		result["collider"].take_damage()
-	if result and "target" in result["collider"].name:
-		result["collider"].get_parent().take_shoot()
-
+	return result
 	
+
+
+func shoot():
 	current_ammo -= 1
 	can_shoot = false
 	can_reload = true
 	shoot_timer.start()
+	
+	var result = create_shoot_raycast()
+	print(result)
+	if !result: return
+	
+	var col = result["collider"]
+	
+	if "Enemy" in col.name:
+		var damage_multiply = 1
+		if "Head" in col.name:
+			damage_multiply = 2
+		col.get_parent().get_damage(PlayerData.damage * damage_multiply)
+	
+	if result and "Enemy" in result["collider"]:
+		var damage_multiplayer = 1
+		if "Head" in result["collider"].name:
+			damage_multiplayer = 2
+		result["collider"]
+	#if result and "Enemy" in result["collider"].name:
+		#result["collider"].take_damage()
+	#if result and "target" in result["collider"].name:
+		#result["collider"].get_parent().take_shoot()
+
 
 
 func _on_shoot_delay_timeout():
@@ -132,6 +156,5 @@ func _on_shoot_delay_timeout():
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "Pistol_RELOAD":
-		print(123)
 		can_shoot = true
 		current_ammo = PlayerData.max_ammo

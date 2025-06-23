@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://d4e1b60mnp5lf"]
+[gd_scene load_steps=20 format=4 uid="uid://d4e1b60mnp5lf"]
 
 [ext_resource type="Material" uid="uid://cny7qe1qsc32u" path="res://Enemies/EnemyPipe/Models/new_shader_material.tres" id="1_iu8d8"]
-[ext_resource type="Script" uid="uid://brck65nvsuto7" path="res://Enemies/EnemyPipe/Script/enemy_pipe.gd" id="1_q5dh8"]
+[ext_resource type="Script" uid="uid://brck65nvsuto7" path="res://Level/Script/enemy_pipe.gd" id="1_q5dh8"]
 [ext_resource type="Shader" uid="uid://bgpv57ytjsk5h" path="res://Player/Shaders/player.gdshader" id="2_vghb8"]
 [ext_resource type="Texture2D" uid="uid://bf2phdowuk487" path="res://Enemies/EnemyPipe/Models/RetroPipe.jpg" id="2_x278n"]
 [ext_resource type="ArrayMesh" uid="uid://cko7lts5vdpqo" path="res://Enemies/EnemyPipe/Models/RetroPipe.obj" id="3_vghb8"]
+[ext_resource type="PackedScene" uid="uid://crh6bs4ujmqu1" path="res://Enemies/EnemyPipe/Scene/enemy_hp.tscn" id="6_ppoyr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iu8d8"]
 radius = 0.19888
@@ -133,6 +134,9 @@ shader_parameter/resolution = Vector2i(320, 240)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_br8um"]
 radius = 0.222705
 height = 1.1511
+
+[sub_resource type="Animation" id="Animation_br8um"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_js6dw"]
 resource_name = "attack"
@@ -656,9 +660,6 @@ tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = PackedFloat32Array(0, 1, 0.167737, -0.0993605, 0.0546199, 0.97929, 0.0333333, 1, 0.162822, -0.104684, 0.0640382, 0.978994, 0.0666667, 1, 0.165096, -0.101391, 0.074261, 0.978237, 0.1, 1, 0.176179, -0.09005, 0.0719618, 0.977585, 0.133333, 1, 0.185412, -0.0749664, 0.0524402, 0.978393, 0.166667, 1, 0.179926, -0.0634119, 0.0395289, 0.980838, 0.2, 1, 0.161373, -0.0472347, 0.03412, 0.985172, 0.233333, 1, 0.141119, -0.0255356, 0.036856, 0.988977, 0.266667, 1, 0.131269, -0.000512886, 0.041932, 0.99046, 0.3, 1, 0.137809, 0.0312203, 0.0351887, 0.989341, 0.366667, 1, 0.184691, 0.0729208, -0.0232705, 0.979811, 0.4, 1, 0.209317, 0.0752622, -0.0422368, 0.974032, 0.433333, 1, 0.226185, 0.0661518, -0.0433164, 0.97087, 0.466667, 1, 0.227917, 0.0492495, -0.0313095, 0.97193, 0.5, 1, 0.210999, 0.0315001, -0.0152296, 0.97686, 0.533333, 1, 0.181892, 0.0183834, -0.00120991, 0.983146, 0.566667, 1, 0.154498, 0.00831172, 0.00674197, 0.987935, 0.6, 1, 0.140786, -0.0037598, 0.00735863, 0.990005, 0.633333, 1, 0.141973, -0.0215642, 0.00849816, 0.989599, 0.666667, 1, 0.150519, -0.0497443, 0.0225785, 0.987097, 0.7, 1, 0.161492, -0.0818783, 0.0440662, 0.982484, 0.716667, 1, 0.167737, -0.0993605, 0.0546199, 0.97929)
 
-[sub_resource type="Animation" id="Animation_br8um"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t7rr6"]
 _data = {
 &"RESET": SubResource("Animation_br8um"),
@@ -682,7 +683,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43682, 0)
 shape = SubResource("CapsuleShape3D_iu8d8")
 
 [node name="Rig2" type="Node3D" parent="."]
-transform = Transform3D(0.364766, 0.0256747, -0.341008, 0.00116913, 0.498492, 0.0387825, 0.341971, -0.0290904, 0.363606, -0.0292408, -0.0734638, 0.0279553)
+transform = Transform3D(0.364766, 0.0256748, -0.341008, 0.00116913, 0.498492, 0.0387824, 0.341971, -0.0290904, 0.363606, -0.0292408, -0.0734638, 0.0279553)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Rig2"]
 bones/0/name = "Pelvis"
@@ -894,7 +895,7 @@ mesh = SubResource("ArrayMesh_br8um")
 skin = SubResource("Skin_ppoyr")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Rig2/Skeleton3D"]
-transform = Transform3D(-0.789845, -0.00248566, 0.613302, 0.182812, -0.955489, 0.231563, 0.585427, 0.295018, 0.755142, -0.546055, 1.11631, -0.0274249)
+transform = Transform3D(-0.789845, -0.00248731, 0.613301, 0.182813, -0.955488, 0.231562, 0.585427, 0.295018, 0.755143, -0.546056, 1.11631, -0.0274248)
 bone_name = "Hand.R"
 bone_idx = 11
 
@@ -935,7 +936,13 @@ debug_color = Color(0.816343, 0.322008, 0.638018, 0.42)
 
 [node name="AttackDelay" type="Timer" parent="."]
 
+[node name="EnemyHp" parent="." instance=ExtResource("6_ppoyr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="PlayerChecker" to="." method="_on_player_checker_body_entered"]
 [connection signal="body_entered" from="AttackChecker" to="." method="_on_attack_checker_body_entered"]
 [connection signal="body_exited" from="AttackChecker" to="." method="_on_attack_checker_body_exited"]
+[connection signal="death" from="EnemyHp" to="." method="_on_enemy_hp_death"]
+
+[editable path="EnemyHp"]

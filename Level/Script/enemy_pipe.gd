@@ -42,16 +42,6 @@ func update_animation() -> void:
 			animator.play("idle")
 
 
-func take_damage() -> void:
-	$AttackChecker/CollisionShape3D.set_deferred("disabled", true)
-	$PlayerChecker/CollisionShape3D.set_deferred("disabled", true)
-	attack_hitbox.set_deferred("disabled", true)
-	move_to_player = false
-	velocity = Vector3.ZERO
-	is_death = true
-	animator.play("death")
-
-
 func _on_player_checker_body_entered(body):
 	if body.name == "Player":
 		player = body
@@ -82,3 +72,13 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "death":
 		await get_tree().create_timer(3).timeout
 		queue_free()
+
+
+func _on_enemy_hp_death() -> void:
+	$AttackChecker/CollisionShape3D.set_deferred("disabled", true)
+	$PlayerChecker/CollisionShape3D.set_deferred("disabled", true)
+	attack_hitbox.set_deferred("disabled", true)
+	move_to_player = false
+	velocity = Vector3.ZERO
+	is_death = true
+	animator.play("death")
