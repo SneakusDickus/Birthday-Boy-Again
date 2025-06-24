@@ -21,6 +21,7 @@ func _physics_process(delta):
 	if player != null and move_to_player:
 		look_at(player.global_position, Vector3(0, 1, 0) ,true)
 		global_rotation = Vector3(rotation_x, global_rotation.y, rotation_z)
+	
 		
 		var dir_x = player.global_position.x - global_position.x
 		var dir_z = player.global_position.z - global_position.z
@@ -77,6 +78,7 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_enemy_hp_death() -> void:
 	$AttackChecker/CollisionShape3D.set_deferred("disabled", true)
 	$PlayerChecker/CollisionShape3D.set_deferred("disabled", true)
+	$CollisionShape3D.set_deferred("disabled", true)
 	attack_hitbox.set_deferred("disabled", true)
 	move_to_player = false
 	velocity = Vector3.ZERO
