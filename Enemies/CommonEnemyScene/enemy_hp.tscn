@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://crh6bs4ujmqu1"]
 
-[ext_resource type="Script" uid="uid://d0gqybcxm12es" path="res://Level/Script/enemy_hp.gd" id="1_5jphd"]
+[ext_resource type="Script" uid="uid://d0gqybcxm12es" path="res://Enemies/CoomonEnemyScript/enemy_hp.gd" id="1_5jphd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p60u7"]
-radius = 0.359692
-height = 1.80754
+radius = 0.156331
+height = 0.669342
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5jphd"]
-radius = 0.159092
+radius = 0.159662
 
 [node name="EnemyHp" type="Node3D"]
 script = ExtResource("1_5jphd")

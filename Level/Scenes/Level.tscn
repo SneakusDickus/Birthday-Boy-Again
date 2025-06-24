@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmvvwpsomam4k"]
 
 [ext_resource type="PackedScene" uid="uid://drixjx46hbi0i" path="res://Level/Models/room.tscn" id="1_dn3ay"]
-[ext_resource type="Script" uid="uid://bigjfq2yx4123" path="res://Level/Scenes/level.gd" id="1_plb7s"]
+[ext_resource type="Script" uid="uid://bigjfq2yx4123" path="res://Level/Script/level.gd" id="1_plb7s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_plb7s"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

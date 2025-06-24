@@ -71,7 +71,6 @@ func _on_animation_player_animation_finished(anim_name):
 			move_to_player = true
 			animator.play("idle")
 	if anim_name == "death":
-		await get_tree().create_timer(3).timeout
 		queue_free()
 
 
@@ -84,3 +83,7 @@ func _on_enemy_hp_death() -> void:
 	velocity = Vector3.ZERO
 	is_death = true
 	animator.play("death")
+
+
+func _on_enemy_hp_damage():
+	player = PlayerData.player

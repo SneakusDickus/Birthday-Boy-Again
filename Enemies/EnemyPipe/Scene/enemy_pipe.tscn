@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=4 uid="uid://cba3dn2iq70n1"]
 
 [ext_resource type="Material" uid="uid://cny7qe1qsc32u" path="res://Enemies/EnemyPipe/Models/new_shader_material.tres" id="1_iu8d8"]
-[ext_resource type="Script" uid="uid://brck65nvsuto7" path="res://Level/Script/enemy_pipe.gd" id="1_q5dh8"]
+[ext_resource type="Script" uid="uid://brck65nvsuto7" path="res://Enemies/EnemyPipe/Script/enemy_pipe.gd" id="1_q5dh8"]
 [ext_resource type="Shader" uid="uid://bgpv57ytjsk5h" path="res://Player/Shaders/player.gdshader" id="2_vghb8"]
 [ext_resource type="Texture2D" uid="uid://bf2phdowuk487" path="res://Enemies/EnemyPipe/Models/RetroPipe.jpg" id="2_x278n"]
 [ext_resource type="ArrayMesh" uid="uid://cko7lts5vdpqo" path="res://Enemies/EnemyPipe/Models/RetroPipe.obj" id="3_vghb8"]
-[ext_resource type="PackedScene" uid="uid://crh6bs4ujmqu1" path="res://Enemies/EnemyPipe/Scene/enemy_hp.tscn" id="6_ppoyr"]
+[ext_resource type="PackedScene" uid="uid://crh6bs4ujmqu1" path="res://Enemies/CommonEnemyScene/enemy_hp.tscn" id="6_ppoyr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iu8d8"]
 radius = 0.19888
@@ -943,6 +943,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [connection signal="body_entered" from="PlayerChecker" to="." method="_on_player_checker_body_entered"]
 [connection signal="body_entered" from="AttackChecker" to="." method="_on_attack_checker_body_entered"]
 [connection signal="body_exited" from="AttackChecker" to="." method="_on_attack_checker_body_exited"]
+[connection signal="damage" from="EnemyHp" to="." method="_on_enemy_hp_damage"]
 [connection signal="death" from="EnemyHp" to="." method="_on_enemy_hp_death"]
 
 [editable path="EnemyHp"]
