@@ -446,7 +446,7 @@ distance_fade_enabled = true
 distance_fade_begin = 5.0
 distance_fade_shadow = 1530.83
 distance_fade_length = 1779.07
-omni_range = 9.003
+omni_range = 10.5
 omni_attenuation = 2.323
 script = ExtResource("6_caj0g")
 
