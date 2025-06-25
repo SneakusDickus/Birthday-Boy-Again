@@ -1,12 +1,12 @@
 [gd_scene load_steps=31 format=4 uid="uid://bporuuqucsjgs"]
 
-[ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Shaders/psx.gdshader" id="1_y0o0p"]
-[ext_resource type="Texture2D" uid="uid://de8ct0ocbrs4s" path="res://Textures/256x256/Plaster/Plaster_05-256x256.png" id="2_l8d4s"]
-[ext_resource type="Texture2D" uid="uid://dnwr1alqce2vd" path="res://Textures/256x256_2/Tile/Tile_23-256x256.png" id="3_r21j3"]
-[ext_resource type="Texture2D" uid="uid://dm8jbe7l7nbbn" path="res://Textures/256x256_2/Tile/Tile_12-256x256.png" id="4_qpasr"]
-[ext_resource type="Texture2D" uid="uid://bvfx0lu2hs0sm" path="res://Textures/256x256_2/Tile/Tile_22-256x256.png" id="5_h2kgi"]
-[ext_resource type="Script" uid="uid://di2ndc01pttt5" path="res://Scripts/lights.gd" id="6_ne5hn"]
-[ext_resource type="Texture2D" uid="uid://di3hx5jqyqx5h" path="res://Textures/256x256/Brick/Brick_09-256x256.png" id="7_vh2i8"]
+[ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="1_y0o0p"]
+[ext_resource type="Texture2D" uid="uid://de8ct0ocbrs4s" path="res://Rooms/Textures/256x256/Plaster/Plaster_05-256x256.png" id="2_l8d4s"]
+[ext_resource type="Texture2D" uid="uid://dnwr1alqce2vd" path="res://Rooms/Textures/256x256_2/Tile/Tile_23-256x256.png" id="3_r21j3"]
+[ext_resource type="Texture2D" uid="uid://dm8jbe7l7nbbn" path="res://Rooms/Textures/256x256_2/Tile/Tile_12-256x256.png" id="4_qpasr"]
+[ext_resource type="Texture2D" uid="uid://bvfx0lu2hs0sm" path="res://Rooms/Textures/256x256_2/Tile/Tile_22-256x256.png" id="5_h2kgi"]
+[ext_resource type="Script" uid="uid://di2ndc01pttt5" path="res://Rooms/Scripts/lights.gd" id="6_ne5hn"]
+[ext_resource type="Texture2D" uid="uid://di3hx5jqyqx5h" path="res://Rooms/Textures/256x256/Brick/Brick_09-256x256.png" id="7_vh2i8"]
 
 [sub_resource type="Environment" id="Environment_xcyej"]
 background_mode = 1

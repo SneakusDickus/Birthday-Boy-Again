@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://crh6bs4ujmqu1"]
+
+[ext_resource type="Script" uid="uid://d0gqybcxm12es" path="res://Enemies/CoomonEnemyScript/enemy_hp.gd" id="1_5jphd"]
+
+[node name="EnemyHp" type="Node3D"]
+script = ExtResource("1_5jphd")
+enemy_hp = 2
