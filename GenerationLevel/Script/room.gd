@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var corridor_inst := preload("res://Level/Models/corridor.tscn")
+@onready var corridor_inst := preload("res://Rooms/Scenes/corridor_floor1.tscn")
 
 @onready var areas: Dictionary = {
 	"West" : $Areas/West,
@@ -9,7 +9,7 @@ extends Node3D
 	"South" : $Areas/South
 }
 
-@onready var doors: Dictionary[String, MeshInstance3D] = {
+@onready var doors: Dictionary[String, Node3D] = {
 	"West" : $Doors/WestDoor,
 	"East" : $Doors/EastDoor,
 	"North" : $Doors/NorthDoor,
@@ -25,11 +25,11 @@ extends Node3D
 
 var last_area_name: String
 
-func _ready():
-	for key in doors:
-		var material = StandardMaterial3D.new()
-		material.albedo_color = Color("#ff4819")
-		doors[key].material_override = material
+#func _ready():
+	#for key in doors:
+		#var material = StandardMaterial3D.new()
+		#material.albedo_color = Color("#ff4819")
+		#doors[key].material_override = material
 
 
 func change_area_state(area: Area3D, mode: String) -> void:
@@ -45,7 +45,8 @@ func change_area_state(area: Area3D, mode: String) -> void:
 func _change_door_state() -> void:
 	for key in adjoining_rooms:
 		if adjoining_rooms[key] != null:
-			doors[key].material_override.albedo_color = Color("#00b236")
+			#doors[key].material_override.albedo_color = Color("#00b236")
+			doors[key].door_open()
 
 
 func _on_west_area_entered(area):

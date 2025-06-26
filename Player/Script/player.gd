@@ -27,7 +27,7 @@ var _rotation_x: float = 0.0
 var _rotation_y: float = 0.0
 
 const SPEED = 3.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 3.5
 
 
 func _ready():

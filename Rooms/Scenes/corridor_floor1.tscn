@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://uyueb0eh1kd3"]
+[gd_scene load_steps=12 format=3 uid="uid://uyueb0eh1kd3"]
 
 [ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="1_0ljk1"]
 [ext_resource type="Texture2D" uid="uid://bx8u8di7noexv" path="res://Rooms/Textures/256x256/Metal/Metal_05-256x256.png" id="2_p28mc"]
@@ -39,6 +39,15 @@ shader_parameter/albedo_repeat = Vector2(12, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gfpm1"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cmyds"]
+size = Vector3(7.97266, 1, 3.98022)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7t5nc"]
+size = Vector3(7.89746, 3.99817, 0.890625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fyeru"]
+size = Vector3(8, 1, 2.4)
+
 [node name="MainNode3D" type="Node3D"]
 
 [node name="Walls" type="Node3D" parent="."]
@@ -67,3 +76,30 @@ transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_kj76s")
 mesh = SubResource("BoxMesh_gfpm1")
 skeleton = NodePath("../..")
+
+[node name="Barriers" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Barriers"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Floor"]
+shape = SubResource("BoxShape3D_cmyds")
+
+[node name="Wall" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49908, 0)
+shape = SubResource("BoxShape3D_7t5nc")
+
+[node name="Wall2" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49908, 0)
+shape = SubResource("BoxShape3D_7t5nc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/StaticBody3D"]
+shape = SubResource("BoxShape3D_fyeru")

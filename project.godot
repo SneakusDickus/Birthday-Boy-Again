@@ -11,13 +11,25 @@ config_version=5
 [application]
 
 config/name="BBA"
-run/main_scene="uid://blmkyykvhhacr"
+run/main_scene="uid://dn7bq2ps8ebvg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 PlayerData="*res://Player/Script/player_data.gd"
+
+[file_customization]
+
+folder_colors={
+"res://Enemies/": "orange",
+"res://GenerationLevel/": "green",
+"res://MainGame/": "red",
+"res://Player/": "orange",
+"res://Rooms/": "green",
+"res://Source/": "purple",
+"res://Textures/": "purple"
+}
 
 [filesystem]
 
