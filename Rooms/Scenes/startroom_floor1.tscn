@@ -302,7 +302,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85131, 0)
 [node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
 layers = 3
-light_energy = 16.0
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 5.364
 light_specular = 16.0

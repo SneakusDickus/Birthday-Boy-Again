@@ -884,7 +884,6 @@ material_override = SubResource("ShaderMaterial_r04hp")
 mesh = SubResource("BoxMesh_vca8x")
 
 [node name="Ceiling" type="Node3D" parent="Room"]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Ceiling"]
 transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 16, 0, 6, 0)
@@ -897,7 +896,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85131, 0)
 [node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
 layers = 3
-light_energy = 16.0
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 5.364
 light_specular = 16.0

@@ -24,6 +24,7 @@ var current_room = 0
 var room_counter = 1
 
 func _ready():
+	array_room_inst.shuffle()
 	var areas = center_room.areas
 	for key in areas:
 		await get_tree().create_timer(0.075).timeout
