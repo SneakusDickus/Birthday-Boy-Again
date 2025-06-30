@@ -691,7 +691,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43682, 0)
 shape = SubResource("CapsuleShape3D_iu8d8")
 
 [node name="Rig2" type="Node3D" parent="."]
-transform = Transform3D(0.364766, 0.0256748, -0.341008, 0.00116909, 0.498492, 0.0387825, 0.341971, -0.0290904, 0.363606, -0.0292408, -0.0734638, 0.0279553)
+transform = Transform3D(0.364766, 0.025675, -0.341008, 0.00116905, 0.498492, 0.0387827, 0.341971, -0.0290905, 0.363606, -0.0292408, -0.0734638, 0.0279553)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Rig2"]
 bones/0/name = "Pelvis"
@@ -903,7 +903,7 @@ mesh = SubResource("ArrayMesh_br8um")
 skin = SubResource("Skin_ppoyr")
 
 [node name="PipeBone" type="BoneAttachment3D" parent="Rig2/Skeleton3D"]
-transform = Transform3D(-0.789845, -0.00248725, 0.613301, 0.182814, -0.955488, 0.231563, 0.585426, 0.295019, 0.755142, -0.546056, 1.11631, -0.0274246)
+transform = Transform3D(-0.789845, -0.00248719, 0.613301, 0.182814, -0.955488, 0.231563, 0.585426, 0.295019, 0.755142, -0.546056, 1.11631, -0.0274246)
 bone_name = "Hand.R"
 bone_idx = 11
 
@@ -939,7 +939,7 @@ shape = SubResource("SphereShape3D_ppoyr")
 debug_color = Color(0.401283, 0.755521, 0, 0.42)
 
 [node name="TorsoHitBox" type="BoneAttachment3D" parent="Rig2/Skeleton3D"]
-transform = Transform3D(0.992006, -0.0580603, 0.112043, 0.035921, 0.98106, 0.190345, -0.120972, -0.184799, 0.975302, -0.00338261, 1.25668, 0.0811201)
+transform = Transform3D(0.992006, -0.0580603, 0.112043, 0.035921, 0.98106, 0.190345, -0.120972, -0.184799, 0.975303, -0.00338261, 1.25668, 0.0811201)
 bone_name = "Torso"
 bone_idx = 1
 
@@ -981,6 +981,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 enemy_torso_area = NodePath("../Rig2/Skeleton3D/TorsoHitBox/Node3D/EnemyTorso")
 enemy_head_area = NodePath("../Rig2/Skeleton3D/HeadHitBox/Node3D/EnemyHead")
 
+[connection signal="body_entered" from="Rig2/Skeleton3D/PipeBone/Pipe/AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="PlayerChecker" to="." method="_on_player_checker_body_entered"]
 [connection signal="body_entered" from="AttackChecker" to="." method="_on_attack_checker_body_entered"]

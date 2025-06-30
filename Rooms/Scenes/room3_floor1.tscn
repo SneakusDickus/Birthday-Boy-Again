@@ -807,6 +807,7 @@ transform = Transform3D(1.31134e-07, -3.82137e-15, -1, 8.74228e-08, 1, 7.64274e-
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0335083, 1.24973, -2.49173)
+visible = false
 shape = SubResource("BoxShape3D_pbofc")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Barriers/Wall4"]

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@export var damage: int = 5
+
 @onready var animator := $AnimationPlayer
 @onready var attack_hitbox := $Rig2/Skeleton3D/PipeBone/Pipe/AttackHitbox/CollisionShape3D
 
@@ -90,3 +92,8 @@ func _on_enemy_hp_death() -> void:
 
 func _on_enemy_hp_damage():
 	player = PlayerData.player
+
+
+func _on_attack_hitbox_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		body.emit_signal("get_damage", damage)

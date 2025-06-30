@@ -6,10 +6,14 @@ extends CharacterBody3D
 @onready var shoot_timer := $ShootDelay
 @onready var particle_fire := $Head/Vfx/Fire
 
+signal get_damage(damage: int)
+
 enum {
 	IDLE,
 	WALK
 }
+var is_dead := false
+
 var currrent_animation = IDLE
 
 var walk_val = 0
@@ -42,8 +46,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	movement(delta)
-	handle_animation(delta)
+	if !is_dead:
+		movement(delta)
+		handle_animation(delta)
 	move_and_slide()
 
 
@@ -145,3 +150,9 @@ func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "Pistol_RELOAD":
 		can_shoot = true
 		current_ammo = PlayerData.max_ammo
+
+
+func _on_get_damage(damage: int) -> void:
+	PlayerData.hp -= damage
+	if PlayerData.hp <= 0:
+		is_dead = true

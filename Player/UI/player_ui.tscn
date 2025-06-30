@@ -1,12 +1,81 @@
-[gd_scene load_steps=4 format=3 uid="uid://ldso3yiikkq8"]
+[gd_scene load_steps=10 format=3 uid="uid://ldso3yiikkq8"]
 
 [ext_resource type="Script" uid="uid://ohav8ypvg80" path="res://Player/Script/player_ui.gd" id="1_agak2"]
+[ext_resource type="Shader" uid="uid://bj5hp0ewxs0kp" path="res://Player/UI/vignette.gdshader" id="2_agak2"]
+[ext_resource type="Texture2D" uid="uid://c3ndfc1tjc1vl" path="res://Test/ui/032e9cd6-e3c5-4d33-af4b-7f22e3fdc902.jpg" id="3_2c8bc"]
 
 [sub_resource type="Gradient" id="Gradient_qcm1t"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_agak2"]
 gradient = SubResource("Gradient_qcm1t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2c8bc"]
+shader = ExtResource("2_agak2")
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_agak2"]
+resource_name = "death_screen"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TextureRect/Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.45, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2c8bc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TextureRect/Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2c8bc"]
+_data = {
+&"RESET": SubResource("Animation_2c8bc"),
+&"death_screen": SubResource("Animation_agak2")
+}
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_agak2")
@@ -34,3 +103,53 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_agak2")
 expand_mode = 1
+
+[node name="Vignette" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_2c8bc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85098, 0, 0.0784314, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2c8bc")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 207.0
+offset_right = 40.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 75
+text = "Ты помер"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2c8bc")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
