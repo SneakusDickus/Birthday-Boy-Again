@@ -691,7 +691,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43682, 0)
 shape = SubResource("CapsuleShape3D_iu8d8")
 
 [node name="Rig2" type="Node3D" parent="."]
-transform = Transform3D(0.364766, 0.025675, -0.341008, 0.00116905, 0.498492, 0.0387827, 0.341971, -0.0290905, 0.363606, -0.0292408, -0.0734638, 0.0279553)
+transform = Transform3D(0.364766, 0.025675, -0.341008, 0.00116907, 0.498492, 0.0387827, 0.341971, -0.0290905, 0.363606, -0.0292408, -0.0734638, 0.0279553)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Rig2"]
 bones/0/name = "Pelvis"

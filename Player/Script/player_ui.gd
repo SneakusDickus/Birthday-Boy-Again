@@ -22,7 +22,8 @@ func _process(delta):
 	$"../SubViewportContainer/SubViewport".size = get_viewport().size
 	gun_camera.global_transform = main_camera.global_transform
 	
-	ammo_label.text = "Ammo: " + str(player.current_ammo) + "/" + str(PlayerData.max_ammo)
+	ammo_label.text = "Ammo: " + str(player.current_ammo) \
+		+ "/" + str(PlayerData.current_ammo)
 	
 	# vingette animation
 
@@ -38,4 +39,5 @@ func _on_player_get_damage(damage: int) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death_screen":
 		PlayerData.hp = max_player_hp
+		PlayerData.current_ammo = 7
 		get_tree().reload_current_scene()

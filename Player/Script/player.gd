@@ -127,7 +127,7 @@ func create_shoot_raycast() -> Dictionary:
 func shoot():
 	current_ammo -= 1
 	can_shoot = false
-	can_reload = true
+	if PlayerData.current_ammo > 0: can_reload = true
 	shoot_timer.start()
 	
 	var result = create_shoot_raycast()
@@ -149,7 +149,16 @@ func _on_shoot_delay_timeout():
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "Pistol_RELOAD":
 		can_shoot = true
-		current_ammo = PlayerData.max_ammo
+		if PlayerData.current_ammo > 0:
+			var dif = PlayerData.max_ammo - current_ammo
+			if PlayerData.current_ammo >= dif:
+				PlayerData.current_ammo -= dif
+				current_ammo += dif
+			else:
+				current_ammo += PlayerData.current_ammo
+				PlayerData.current_ammo = 0
+		if PlayerData.current_ammo == 0:
+			can_reload = false
 
 
 func _on_get_damage(damage: int) -> void:

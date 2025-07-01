@@ -64,6 +64,8 @@ func _on_shooting_timer_timeout():
 		var projectile = projectile_inst.instantiate()
 		get_tree().get_root().get_child(-1).add_child(projectile)
 		projectile.global_position = projectile_spawn_point.global_position
-		var new_dir = player.global_position - projectile_spawn_point.global_position 
+		var player_pos = player.global_position
+		player_pos.y += .4
+		var new_dir = player_pos - projectile_spawn_point.global_position 
 		projectile.velocity = new_dir
 		animator.play("shoot")

@@ -3,5 +3,9 @@ extends Node
 var player
 
 var max_ammo = 7
-var damage = 1
+var max_hp
+
+var current_ammo = 7
 var hp = 20
+
+var damage = 1
