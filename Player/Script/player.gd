@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var particle_fire := $Head/Vfx/Fire
 
 signal get_damage(damage: int)
+signal get_heal
 
 enum {
 	IDLE,
@@ -165,3 +166,15 @@ func _on_get_damage(damage: int) -> void:
 	PlayerData.hp -= damage
 	if PlayerData.hp <= 0:
 		is_dead = true
+
+
+func get_ammo():
+	PlayerData.current_ammo += randi_range(2, 5)
+	if current_ammo < PlayerData.max_ammo:
+		can_reload = true
+
+
+func get_hp():
+	PlayerData.hp += randi_range(2, 7)
+	if PlayerData.hp > PlayerData.max_hp:
+		PlayerData.hp = PlayerData.max_hp

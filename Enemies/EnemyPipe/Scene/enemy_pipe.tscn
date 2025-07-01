@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cba3dn2iq70n1"]
+[gd_scene load_steps=24 format=4 uid="uid://cba3dn2iq70n1"]
 
 [ext_resource type="Material" uid="uid://cny7qe1qsc32u" path="res://Enemies/EnemyPipe/Models/new_shader_material.tres" id="1_iu8d8"]
 [ext_resource type="Script" uid="uid://brck65nvsuto7" path="res://Enemies/EnemyPipe/Script/enemy_pipe.gd" id="1_q5dh8"]
@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cko7lts5vdpqo" path="res://Enemies/EnemyPipe/Models/RetroPipe.obj" id="3_vghb8"]
 [ext_resource type="Script" uid="uid://d6mn8yl8eagl" path="res://Enemies/CoomonEnemyScript/enemy_collider.gd" id="6_dkw70"]
 [ext_resource type="PackedScene" uid="uid://crh6bs4ujmqu1" path="res://Enemies/CommonEnemyScene/enemy_hp.tscn" id="6_ppoyr"]
+[ext_resource type="PackedScene" uid="uid://crnfjc42vdxrl" path="res://Enemies/ItemDrop/Scene/item_dropper.tscn" id="8_r8hpu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iu8d8"]
 radius = 0.19888
@@ -691,7 +692,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43682, 0)
 shape = SubResource("CapsuleShape3D_iu8d8")
 
 [node name="Rig2" type="Node3D" parent="."]
-transform = Transform3D(0.364766, 0.025675, -0.341008, 0.00116907, 0.498492, 0.0387827, 0.341971, -0.0290905, 0.363606, -0.0292408, -0.0734638, 0.0279553)
+transform = Transform3D(0.364766, 0.025675, -0.341008, 0.00116908, 0.498492, 0.0387827, 0.341971, -0.0290906, 0.363606, -0.0292408, -0.0734638, 0.0279553)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Rig2"]
 bones/0/name = "Pelvis"
@@ -980,6 +981,9 @@ debug_color = Color(0.816343, 0.322008, 0.638018, 0.42)
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 enemy_torso_area = NodePath("../Rig2/Skeleton3D/TorsoHitBox/Node3D/EnemyTorso")
 enemy_head_area = NodePath("../Rig2/Skeleton3D/HeadHitBox/Node3D/EnemyHead")
+
+[node name="ItemDropper" parent="." node_paths=PackedStringArray("enemy_hp_node") instance=ExtResource("8_r8hpu")]
+enemy_hp_node = NodePath("../EnemyHp")
 
 [connection signal="body_entered" from="Rig2/Skeleton3D/PipeBone/Pipe/AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
