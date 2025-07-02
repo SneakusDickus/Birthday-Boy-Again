@@ -16,7 +16,7 @@ var is_death := false
 func _ready():
 	rotation_z = global_rotation.z
 	rotation_x = global_rotation.x
-	attack_hitbox.disabled = true
+	attack_hitbox.set_deferred("disabled", true)
 
 
 func _physics_process(delta):

@@ -473,7 +473,12 @@ shape = SubResource("BoxShape3D_br1ru")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25092, 0.0439453)
 shape = SubResource("BoxShape3D_ohx1s")
 
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="EnemiesSpawnpoints" type="Node3D" parent="."]
+
 [connection signal="area_entered" from="Areas/North" to="." method="_on_north_area_entered"]
 [connection signal="area_entered" from="Areas/West" to="." method="_on_west_area_entered"]
 [connection signal="area_entered" from="Areas/East" to="." method="_on_east_area_entered"]
 [connection signal="area_entered" from="Areas/South" to="." method="_on_south_area_entered"]
+[connection signal="child_exiting_tree" from="Enemies" to="." method="_on_enemies_child_exiting_tree"]

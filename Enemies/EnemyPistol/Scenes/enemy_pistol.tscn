@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://c28yd82oyufll"]
+[gd_scene load_steps=24 format=4 uid="uid://c28yd82oyufll"]
 
 [ext_resource type="Script" uid="uid://uo75fd3x36p8" path="res://Enemies/EnemyPistol/Script/enemy_pistol.gd" id="1_i80fr"]
 [ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="2_ackos"]
 [ext_resource type="Texture2D" uid="uid://d1dh1i5q5vsvv" path="res://Enemies/EnemyPistol/Models/RevolverNaturalColors.png" id="2_m21lx"]
 [ext_resource type="Script" uid="uid://d6mn8yl8eagl" path="res://Enemies/CoomonEnemyScript/enemy_collider.gd" id="3_unu5v"]
 [ext_resource type="PackedScene" uid="uid://crh6bs4ujmqu1" path="res://Enemies/CommonEnemyScene/enemy_hp.tscn" id="3_wi3e6"]
+[ext_resource type="PackedScene" uid="uid://crnfjc42vdxrl" path="res://Enemies/ItemDrop/Scene/item_dropper.tscn" id="6_s2m6m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_848o2"]
 radius = 0.181296
@@ -2050,6 +2051,9 @@ debug_color = Color(0.98402, 0, 0.201918, 0.42)
 [node name="EnemyHp" parent="." node_paths=PackedStringArray("enemy_torso_area", "enemy_head_area") instance=ExtResource("3_wi3e6")]
 enemy_torso_area = NodePath("../metarig_001/Skeleton3D/EnemyTorso/Node3D/EnemyTorso")
 enemy_head_area = NodePath("../metarig_001/Skeleton3D/EnemyHead/Node3D/EnemyHead")
+
+[node name="ItemDropper" parent="." node_paths=PackedStringArray("enemy_hp_node") instance=ExtResource("6_s2m6m")]
+enemy_hp_node = NodePath("../EnemyHp")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]

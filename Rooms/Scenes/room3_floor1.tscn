@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://4ux3uwjj25qq"]
+[gd_scene load_steps=54 format=4 uid="uid://4ux3uwjj25qq"]
 
 [ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="1_0x2cd"]
 [ext_resource type="Script" uid="uid://dhg64sswk4gik" path="res://GenerationLevel/Script/room.gd" id="1_mbeqx"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://di2ndc01pttt5" path="res://Rooms/Scripts/lights.gd" id="11_8dsdk"]
 [ext_resource type="Texture2D" uid="uid://di3hx5jqyqx5h" path="res://Rooms/Textures/256x256/Brick/Brick_09-256x256.png" id="12_j80nj"]
 [ext_resource type="PackedScene" uid="uid://xdacc477xxy0" path="res://Rooms/Scenes/door.tscn" id="13_x4arx"]
+[ext_resource type="Script" uid="uid://dgunqby1s6uqq" path="res://Rooms/enemy_spawn_point.gd" id="14_p5u0a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avp0b"]
 render_priority = 0
@@ -920,7 +921,38 @@ transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114
 shape = SubResource("BoxShape3D_jfogv")
 debug_color = Color(1, 0.592239, 0.744473, 0.42)
 
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="EnemiesSpawnpoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10789, 1.46948, -2.23392)
+script = ExtResource("14_p5u0a")
+enemy_type = "Pistol"
+
+[node name="Marker3D2" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39211, 1.46948, -2.23392)
+script = ExtResource("14_p5u0a")
+enemy_type = "Pistol"
+
+[node name="Marker3D3" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39211, 1.46948, 2.16608)
+script = ExtResource("14_p5u0a")
+enemy_type = "Pistol"
+
+[node name="Marker3D4" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10789, 1.46948, 2.16608)
+script = ExtResource("14_p5u0a")
+enemy_type = "Pistol"
+
+[node name="Marker3D5" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00756894, 1.46948, -0.00599452)
+script = ExtResource("14_p5u0a")
+enemy_type = "Pipe"
+
 [connection signal="area_entered" from="Areas/North" to="." method="_on_north_area_entered"]
 [connection signal="area_entered" from="Areas/West" to="." method="_on_west_area_entered"]
 [connection signal="area_entered" from="Areas/East" to="." method="_on_east_area_entered"]
 [connection signal="area_entered" from="Areas/South" to="." method="_on_south_area_entered"]
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
+[connection signal="child_exiting_tree" from="Enemies" to="." method="_on_enemies_child_exiting_tree"]

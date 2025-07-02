@@ -7,7 +7,6 @@ extends CharacterBody3D
 @onready var particle_fire := $Head/Vfx/Fire
 
 signal get_damage(damage: int)
-signal get_heal
 
 enum {
 	IDLE,
@@ -134,7 +133,7 @@ func shoot():
 	var result = create_shoot_raycast()
 	if !result: return
 	
-	print(result)
+	#print(result)
 	
 	var col = result["collider"]
 	

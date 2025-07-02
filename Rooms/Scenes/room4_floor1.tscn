@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cjjubxkfp7jnq"]
+[gd_scene load_steps=46 format=4 uid="uid://cjjubxkfp7jnq"]
 
 [ext_resource type="Script" uid="uid://dhg64sswk4gik" path="res://GenerationLevel/Script/room.gd" id="1_h68i0"]
 [ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="1_xud0y"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://di2ndc01pttt5" path="res://Rooms/Scripts/lights.gd" id="6_mm254"]
 [ext_resource type="Texture2D" uid="uid://di3hx5jqyqx5h" path="res://Rooms/Textures/256x256/Brick/Brick_09-256x256.png" id="7_5e4b3"]
 [ext_resource type="PackedScene" uid="uid://xdacc477xxy0" path="res://Rooms/Scenes/door.tscn" id="9_ygoj8"]
+[ext_resource type="Script" uid="uid://dgunqby1s6uqq" path="res://Rooms/enemy_spawn_point.gd" id="10_futwn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_re4l4"]
 render_priority = 0
@@ -2563,7 +2564,38 @@ shape = SubResource("BoxShape3D_ei2hl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25574, 1.12769, 1.25713)
 shape = SubResource("BoxShape3D_ei2hl")
 
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="EnemiesSpawnpoints" type="Node3D" parent="."]
+
+[node name="Marker3D5" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00756894, 1.46948, -0.524507)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D6" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73516, 1.46948, -2.73628)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D7" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70892, 1.46948, -2.73628)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D8" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70892, 1.46948, 2.7078)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D9" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73516, 1.46948, 2.7078)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
 [connection signal="area_entered" from="Areas/North" to="." method="_on_north_area_entered"]
 [connection signal="area_entered" from="Areas/West" to="." method="_on_west_area_entered"]
 [connection signal="area_entered" from="Areas/East" to="." method="_on_east_area_entered"]
 [connection signal="area_entered" from="Areas/South" to="." method="_on_south_area_entered"]
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
+[connection signal="child_exiting_tree" from="Enemies" to="." method="_on_enemies_child_exiting_tree"]

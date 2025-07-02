@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bwjok15xcsn4j"]
+[gd_scene load_steps=84 format=4 uid="uid://bwjok15xcsn4j"]
 
 [ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="1_6hvll"]
 [ext_resource type="Script" uid="uid://dhg64sswk4gik" path="res://GenerationLevel/Script/room.gd" id="1_ml3o0"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://de2cy3moy24km" path="res://Rooms/Models/PSX Dungeon Boxes and Barrels Pack/Models/Crates_and_barrels_glb_Crates_and_barrels_normal.png" id="14_ab625"]
 [ext_resource type="Texture2D" uid="uid://b6mdfcvrvwysm" path="res://Rooms/Textures/256x256/Metal/Metal_03-256x256.png" id="15_pg21n"]
 [ext_resource type="PackedScene" uid="uid://xdacc477xxy0" path="res://Rooms/Scenes/door.tscn" id="17_xtg3x"]
+[ext_resource type="Script" uid="uid://dgunqby1s6uqq" path="res://Rooms/enemy_spawn_point.gd" id="18_mmbbi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdoyi"]
 render_priority = 0
@@ -1613,7 +1614,38 @@ shape = SubResource("CapsuleShape3D_mmbbi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6281, 0, 3.62288)
 shape = SubResource("CapsuleShape3D_mmbbi")
 
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="EnemiesSpawnpoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10789, 1.46948, -2.23392)
+script = ExtResource("18_mmbbi")
+enemy_type = "Pistol"
+
+[node name="Marker3D2" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39211, 1.46948, -2.23392)
+script = ExtResource("18_mmbbi")
+enemy_type = "Pistol"
+
+[node name="Marker3D3" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39211, 1.46948, 2.16608)
+script = ExtResource("18_mmbbi")
+enemy_type = "Pistol"
+
+[node name="Marker3D4" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10789, 1.46948, 2.16608)
+script = ExtResource("18_mmbbi")
+enemy_type = "Pistol"
+
+[node name="Marker3D5" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130931, 1.46948, 0.0171359)
+script = ExtResource("18_mmbbi")
+enemy_type = "Pipe"
+
 [connection signal="area_entered" from="Areas/North" to="." method="_on_north_area_entered"]
 [connection signal="area_entered" from="Areas/West" to="." method="_on_west_area_entered"]
 [connection signal="area_entered" from="Areas/East" to="." method="_on_east_area_entered"]
 [connection signal="area_entered" from="Areas/South" to="." method="_on_south_area_entered"]
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
+[connection signal="child_exiting_tree" from="Enemies" to="." method="_on_enemies_child_exiting_tree"]

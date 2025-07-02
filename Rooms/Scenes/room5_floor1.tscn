@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bb8qd08bpt4yd"]
+[gd_scene load_steps=47 format=4 uid="uid://bb8qd08bpt4yd"]
 
 [ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="1_nqblr"]
 [ext_resource type="Script" uid="uid://dhg64sswk4gik" path="res://GenerationLevel/Script/room.gd" id="1_sy504"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://di3hx5jqyqx5h" path="res://Rooms/Textures/256x256/Brick/Brick_09-256x256.png" id="8_ihrch"]
 [ext_resource type="PackedScene" uid="uid://xdacc477xxy0" path="res://Rooms/Scenes/door.tscn" id="10_t2jh8"]
 [ext_resource type="Script" uid="uid://c3ss0a4xuh08a" path="res://Rooms/Scripts/kill_plane.gd" id="11_kddg8"]
+[ext_resource type="Script" uid="uid://dgunqby1s6uqq" path="res://Rooms/enemy_spawn_point.gd" id="12_x1ynp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_01j5j"]
 render_priority = 0
@@ -352,11 +353,6 @@ transform = Transform3D(1.14641e-14, 4.37114e-08, 8, 6, -4.37114e-08, 0, 2.62268
 material_override = SubResource("ShaderMaterial_01j5j")
 mesh = SubResource("BoxMesh_7fy74")
 
-[node name="MeshInstance3D20" type="MeshInstance3D" parent="Room/Walls"]
-transform = Transform3D(1.14641e-14, 4.37114e-08, 8, 6, -4.37114e-08, 0, 2.62268e-07, 1, -3.49691e-07, -5, -3.5, -8.5)
-material_override = SubResource("ShaderMaterial_01j5j")
-mesh = SubResource("BoxMesh_7fy74")
-
 [node name="MeshInstance3D21" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(2, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, -0.5, -8.5)
 material_override = SubResource("ShaderMaterial_i8dxo")
@@ -416,6 +412,11 @@ mesh = SubResource("BoxMesh_6427m")
 transform = Transform3D(-8.74228e-08, 1, -8.74228e-08, 0, -4.37114e-08, -2, -2, -4.37114e-08, 3.82137e-15, 8.5, -4.5, 0)
 material_override = SubResource("ShaderMaterial_i8dxo")
 mesh = SubResource("BoxMesh_6427m")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1.14641e-14, 4.37114e-08, 8, 6, -4.37114e-08, 0, 2.62268e-07, 1, -3.49691e-07, -5, -3.5, -8.5)
+material_override = SubResource("ShaderMaterial_01j5j")
+mesh = SubResource("BoxMesh_7fy74")
 
 [node name="Ceiling" type="Node3D" parent="Room"]
 
@@ -760,8 +761,34 @@ script = ExtResource("11_kddg8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.59078, 0)
 shape = SubResource("BoxShape3D_ma11p")
 
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="EnemiesSpawnpoints" type="Node3D" parent="."]
+
+[node name="Marker3D6" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(0.613114, 0, 0.789995, 0, 1, 0, -0.789995, 0, 0.613114, -2.03369, 0.554651, -1.98985)
+script = ExtResource("12_x1ynp")
+enemy_type = "Pistol"
+
+[node name="Marker3D7" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98048, 0.554651, -1.97186)
+script = ExtResource("12_x1ynp")
+enemy_type = "Pistol"
+
+[node name="Marker3D8" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98048, 0.554651, 1.97936)
+script = ExtResource("12_x1ynp")
+enemy_type = "Pistol"
+
+[node name="Marker3D9" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0247, 0.554651, 1.97936)
+script = ExtResource("12_x1ynp")
+enemy_type = "Pistol"
+
 [connection signal="area_entered" from="Areas/North" to="." method="_on_north_area_entered"]
 [connection signal="area_entered" from="Areas/West" to="." method="_on_west_area_entered"]
 [connection signal="area_entered" from="Areas/East" to="." method="_on_east_area_entered"]
 [connection signal="area_entered" from="Areas/South" to="." method="_on_south_area_entered"]
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
 [connection signal="body_entered" from="KillPlane" to="KillPlane" method="_on_body_entered"]
+[connection signal="child_exiting_tree" from="Enemies" to="." method="_on_enemies_child_exiting_tree"]
