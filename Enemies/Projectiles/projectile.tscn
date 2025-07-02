@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr4fr8ebtb1fj"]
+
+[ext_resource type="Script" uid="uid://c7ehd4wv7p8dv" path="res://Enemies/Projectiles/projectile.gd" id="1_a0imw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0imw"]
+shading_mode = 0
+albedo_color = Color(0.996792, 0, 0.228048, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_s2nii"]
+material = SubResource("StandardMaterial3D_a0imw")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a0imw"]
+
+[node name="Projectile" type="CharacterBody3D"]
+script = ExtResource("1_a0imw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_s2nii")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_a0imw")
+debug_color = Color(0, 0, 0, 0.42)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

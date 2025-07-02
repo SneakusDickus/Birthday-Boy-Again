@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmvvwpsomam4k"]
+
+[ext_resource type="Script" uid="uid://bigjfq2yx4123" path="res://GenerationLevel/Script/level.gd" id="1_plb7s"]
+[ext_resource type="PackedScene" uid="uid://b7lalq2hv6g3o" path="res://Rooms/Scenes/startroom_floor1.tscn" id="2_rb8pk"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_plb7s")
+total_room_number = 9
+
+[node name="Rooms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="StartroomFloor1" parent="Rooms" instance=ExtResource("2_rb8pk")]

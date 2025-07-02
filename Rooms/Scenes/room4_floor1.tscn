@@ -1,0 +1,2606 @@
+[gd_scene load_steps=46 format=4 uid="uid://cjjubxkfp7jnq"]
+
+[ext_resource type="Script" uid="uid://dhg64sswk4gik" path="res://GenerationLevel/Script/room.gd" id="1_h68i0"]
+[ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="1_xud0y"]
+[ext_resource type="Texture2D" uid="uid://de8ct0ocbrs4s" path="res://Rooms/Textures/256x256/Plaster/Plaster_05-256x256.png" id="2_bnvo0"]
+[ext_resource type="Texture2D" uid="uid://dnwr1alqce2vd" path="res://Rooms/Textures/256x256_2/Tile/Tile_23-256x256.png" id="3_d4wt3"]
+[ext_resource type="Texture2D" uid="uid://dm8jbe7l7nbbn" path="res://Rooms/Textures/256x256_2/Tile/Tile_12-256x256.png" id="4_2wa8h"]
+[ext_resource type="Texture2D" uid="uid://bvfx0lu2hs0sm" path="res://Rooms/Textures/256x256_2/Tile/Tile_22-256x256.png" id="5_ymeyu"]
+[ext_resource type="Script" uid="uid://di2ndc01pttt5" path="res://Rooms/Scripts/lights.gd" id="6_mm254"]
+[ext_resource type="Texture2D" uid="uid://di3hx5jqyqx5h" path="res://Rooms/Textures/256x256/Brick/Brick_09-256x256.png" id="7_5e4b3"]
+[ext_resource type="PackedScene" uid="uid://xdacc477xxy0" path="res://Rooms/Scenes/door.tscn" id="9_ygoj8"]
+[ext_resource type="Script" uid="uid://dgunqby1s6uqq" path="res://Rooms/enemy_spawn_point.gd" id="10_futwn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_re4l4"]
+render_priority = 0
+shader = ExtResource("1_xud0y")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_bnvo0")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.037
+shader_parameter/resolution = Vector2i(256, 256)
+shader_parameter/albedo_repeat = Vector2(48, 32)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y0srs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_25eig"]
+render_priority = 0
+shader = ExtResource("1_xud0y")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("3_d4wt3")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.075
+shader_parameter/resolution = Vector2i(256, 256)
+shader_parameter/albedo_repeat = Vector2(9, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pha88"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aab55"]
+render_priority = 0
+shader = ExtResource("1_xud0y")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("3_d4wt3")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.1
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo_repeat = Vector2(3, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vnbj2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8f74"]
+render_priority = 0
+shader = ExtResource("1_xud0y")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("4_2wa8h")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.037
+shader_parameter/resolution = Vector2i(256, 256)
+shader_parameter/albedo_repeat = Vector2(30, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mkfgh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53jiy"]
+render_priority = 0
+shader = ExtResource("1_xud0y")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("5_ymeyu")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(256, 256)
+shader_parameter/albedo_repeat = Vector2(6, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ffcao"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmmcs"]
+render_priority = 0
+shader = ExtResource("1_xud0y")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("5_ymeyu")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(256, 256)
+shader_parameter/albedo_repeat = Vector2(4, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wwfqf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bbfn"]
+render_priority = 0
+shader = ExtResource("1_xud0y")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("7_5e4b3")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.15
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo_repeat = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0fej"]
+resource_name = "x1"
+cull_mode = 2
+albedo_color = Color(0.930925, 0.930925, 0.930925, 1)
+metallic = 0.05
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3ghnx"]
+_surfaces = [{
+"aabb": AABB(-0.62, 2.165, -0.62, 1.24, 0.470001, 1.24),
+"format": 34896613377,
+"index_count": 114,
+"index_data": PackedByteArray("EQASABMACgASABEAEwAUABEAFAAFABEABQAKABEAEwACABQAAgAFABQAEwASABUAAgADAAUACgAFAAMAAwALAAoAAgABAAMACgALAAwAAAABAAIADgASAAoADAAOAAoADgAVABIADwAOAAwADwAVAA4ADAAQAA8ADwAQAAkAFgAVAA8ACQANAA8AFgAPAA0ABgANAAkACQAHAAYABgAHAAAAFwAWAA0AFwANAAYAFQAWABcAAAAEAAYAAgAEAAAACAAXAAYAFwAIABUABgAEAAgACAAEAAIAFQAIABMAAgATAAgA"),
+"lods": [0.621336, PackedByteArray("AAABAAIAAgABAAMAAgAEAAAAAgADAAUAAAAEAAYABgAHAAAACAAEAAIABgAEAAgAAgAFAAgACQAHAAYACgAFAAMABQAKAAgAAwALAAoACgALAAwABgANAAkACAANAAYADgAIAAoADAAOAAoACAAPAA0ACQANAA8ADwAIAA4ADwAOAAwADwAQAAkADAAQAA8A")],
+"name": "x1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/38AAH/lAAA5OAAAxccAAH0lAACB2gAAfxoAAP9/AAD/fwAA//8AAAAAAAD/fwAAgdoAAIHaAADFxwAAxccAAP9//////wAAf+UAAP9/AAB9JQAAfSUAADk4AAA5OAAA/38AAH8aAAD//wAA/38AAP9/AAAAAAAAgdoAAH0lAADFxwAAOTgAAH0l//99JQAA/3///wAAAAB9Jf//gdoAAAAA////fwAAgdr//30lAAD//////38AAIHa//+B2gAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fe765"]
+resource_name = "mesh_Mesh0"
+_surfaces = [{
+"aabb": AABB(-0.62, 2.165, -0.62, 1.24, 0.470001, 1.24),
+"format": 34896613383,
+"index_count": 114,
+"index_data": PackedByteArray("GQAaABsAGwAcABkAHQAeAB8AHwAgAB0AAAABAAIAAgAEAAAAIQAiAAMAIQADAAUAIwAJAAcABwAkACMACwANACUAJQAmAAsADgAnACgAKAAPAA4AKQAqAAoACgAMACkAKwAIAAYABgAsACsALQAuAC8ALwAwAC0AEgAxADIAEAAxABIAEwAzADQANQATADQANgA3ADgAOAA5ADYAFQA6ADsAPAAVADsAPQA+ABEAEQAXAD0AGAA/AEAAQABBABgAQgBDABYAQgAWAEQARQBGABQARQAUAEcASABJAEoASwBJAEgA"),
+"lods": [0.621336, PackedByteArray("AAABAAIAAgABAAMAAgAEAAAAAgADAAUAAAAEAAYABwAFAAMABgAIAAAAAwAJAAcACgAIAAYABwAJAAsABgAMAAoACwANAAcACgAMAA4ADgANAAsADgAPAAoACwAPAA4AEAARABIAEwASABEAFAARABAAFQATABEAEQAUABYAEQAXABUAEQAWABgAGAAXABEA")],
+"material": SubResource("StandardMaterial3D_v0fej"),
+"name": "x1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 76,
+"vertex_data": PackedByteArray("/38AAH/l//85OAAAxcf//30lAACB2v//fxoAAP9/////fwAA/////wAAAAD/f///gdoAAIHa//99JQAAfSX//8XHAADFx///OTgAADk4//9/5QAA/3////9/AAB/Gv////8AAP9/////fwAAAAD//4HaAAB9Jf//xccAADk4////fwAAAACX8v9//////zCxfSUAAH0ll/IAAAAA/38q0IHaAAB9JXD8fSUAAIHaX7D//wAA/3+s+v9/AAD//zCxgdoAAIHaLdJ9Jf//fSX///9///8AAP//fSX//4Ha//8AAP///3///4Ha//99Jf///3////////99Jf//gdr///9///8AAP//fSUAAIHa//85OAAAxcf//38aAAD/f///AAAAAP9///99JQAAfSX//zk4AAA5OP///38AAAAA////fwAAfxr//4HaAAB9Jf//xccAADk4//9/5QAA/3//////AAD/f////38AAH/l////fwAA/////4HaAACB2v//xccAAMXH////f///AACX8n0l//99JZfyfSUAAH0lKtB9Jf//fSUq0AAA////fyrQgdr//4Ha////f////////4Ha//99Jf////////9///8AAAAA/39fsAAA////f1+wfSX//4HaX7B9JQAAgdowsX0l//+B2jCx/38AAP//LdL/f/////8t0oHa//+B2i3Sgdr//4HarPr//////3+s+oHaAACB2qz6//////9/cPyB2v//fSVw/P//AAD/f3D8/38AAAAAVveB2v//fSVW9/9///8AAFb3gdoAAH0lVvf/f/8//3//P/9//z//f/8//3//P/9//z//f/8//7/+//9//z//v/7//z/+//8//v//P/7//z/+//8//v//P/7/VlENyBdvGppWUQ3IFnch8UTJOnqSd/bqsrEVfBdvGposk5Rz/3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/8//3//P/+//v//v/7//z/+//8//v//P/7//z/+//8//v//P/7//3//P/9//z//f/8//3//P/9//z//f/8/VlENyFZRDcgWdyHxFnch8RZ3IfH/f/+//3//v/9//7//f/+/knf26pJ39uqSd/bqF28amhdvGposk5RzLJOUcyyTlHOysRV8srEVfLKxFXxEyTp6RMk6ekTJOnpRxRtTUcUbU1HFG1NRxRtT")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3ghnx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1av4"]
+resource_name = "x1"
+cull_mode = 2
+albedo_color = Color(0.930925, 0.930925, 0.930925, 1)
+metallic = 0.05
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w7wt3"]
+_surfaces = [{
+"aabb": AABB(-0.103923, 2.47, -0.12, 0.207846, 6.5, 0.18),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AQAAAAQABAAAAAIAAAABAAUAAAAFAAIAAwABAAQAAwAFAAEAAgADAAQAAwACAAUA"),
+"lods": [0.101155, PackedByteArray("AAABAAIAAwACAAEAAgADAAAAAwABAAAA")],
+"name": "x1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP//AAD/fwAAAAAAAAAA/////wAA////////AAD//wAA//8AAP9///8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rbed0"]
+resource_name = "mesh-2_Mesh0"
+_surfaces = [{
+"aabb": AABB(-0.103923, 2.47, -0.12, 0.207846, 6.5, 0.18),
+"format": 34896613383,
+"index_count": 24,
+"index_data": PackedByteArray("AQAAAAQABAAAAAIAAAABAAUAAAAFAAIAAwABAAQAAwAFAAEAAgADAAQAAwACAAUA"),
+"lods": [0.101155, PackedByteArray("AAABAAIAAwACAAEAAgADAAAAAwABAAAA")],
+"material": SubResource("StandardMaterial3D_b1av4"),
+"name": "x1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP//+cD/fwAAAABw8gAA/////3jA////////q/3//wAA//9M7f9///8AAHDyKEK1+wZAaNPshDvCPKNFmWeam1z4v5Ys")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_w7wt3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0may2"]
+resource_name = "x1"
+cull_mode = 2
+albedo_color = Color(0.930925, 0.930925, 0.930925, 1)
+metallic = 0.05
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5axvk"]
+_surfaces = [{
+"aabb": AABB(-1, -0.92388, -1, 2, 3.08888, 2),
+"format": 34896613377,
+"index_count": 372,
+"index_data": PackedByteArray("IgATACMAIwATACQAJAATACIAAwAiACMAIgAlACQAIgADACYAJgAlACIAAwAnACYAJwADACMAJQAmABcAIwAUACcAJQAoACQAJAApACMAKQAkACgAKgAoACUAFwAqACUAAgAUACMAKQACACMABwAUAAIAFAAHACcAKwACACkABwAsACcAAgAVAAcAFQACACsALAAHABYAFQAWAAcAJwAsABYAHgArACkAKAAeACkAFgAtACcAJgAnAC0ALQAXACYALQAWAAgACAAWABUAFwAtAAQACAAEAC0ACQAXAAQAKgAXAAkAFQAuAAgAKwAuABUABAAIABgAGAAIAC4ABAAZAAkABAAYABkACQAAACoAGwAuACsAGwArAB4ALgAMABgADAAuABsAAQAYAAwAGQAYAAEACwAJABkAAAAJAAsALwAZAAEAGQAvAAsADAAwAAEAGgAvAAEACwAvABoACwAxAAAAMAAMAA0ADQAMABsAAQAwAA8ADwAwAA0AAQAPABwAAQAcABoAHQAxAAsAGgAyAAsACwAyAB0AMwAaABwAGgAzADIAHAAPADQAMQAdAAoAAAAxAAoAHAA1ADMAHAA0ADUANAAPAB8ADQAfAA8ANQA0ACEAHwAQADQAIQA0ABAAEAA2ACEAIQA3ADUANwAhADYAEAARADYANgARADcAEAAfADgAEQAQADgAHwANADkAOAAfADkAOgA5AA0ANQA3ABIAEgAzADUANwARADsAOwASADcAPAASADsAMwASAAUAEgA8AAUAMwAFADIAOwA9ADwABQA8AD0AIAA7ABEAPQA7ACAAEQA4ACAAPQA+AAUAMgAFAD4APgA9ACAAPgAdADIAPwAgADgAPgAgAD8AHQA+AD8AOAA5AD8AHQA/AAoACgA/ADkAOQA6AAoACgA6AA4ADgA6AA0ADQAbAA4AHgAOABsADgAGAAoABgAOAB4ACgAGAAAAHgAoAAYAKgAAAAYABgAoACoA"),
+"lods": [0.376381, PackedByteArray("EwAUAAMAAgAUABMAFAAHAAMABwAUAAIAAgAVAAcAFQAWAAcAAwAHABYAAgAIABUACAAWABUAFgAEAAMABAAWAAgAAwAAABMAFwADAAQAFwAAAAMACQAXAAQAAAAXAAkABAAIABgABAAZAAkABAAYABkACwAJABkAAAAJAAsAGQAYAAEACAAMABgAAQAYAAwAGgAZAAEAGQAaAAsAAQAMAA8ADAAIABsAGwAIAAIAAQAcABoAAQAPABwAGgAFAAsABQAaABwACwAFAB0ACwAdAAAAGwACAB4AHgACABMABgATAAAAHgATAAYAAAAdAAoACgAGAAAABgAOAB4AHgAOABsADgAGAAoADQAbAA4ACgANAA4ADQAMABsADwAMAA0AHwANAAoADQAfAA8AEAAfAAoAHwAQAA8AHQAgAAoACgAgABAAIAAdAAUAEQAQACAAIQAPABAAEAARACEAHAAPACEAEgARACAAEgAgAAUAIQARABIAEgAFABwAIQASABwA"), 0.484277, PackedByteArray("BAAHAAgABwAEAAMAAgAHAAMACAAHAAIABAAAAAMAAAAEAAkABAAIAAkACgADAAAAAgADAAoAAAAJAAsAAAALAAoACQAIAAEACQABAAsAAQAIAAwADQAIAAIADAAIAA0ACgAOAAIAAgAOAA0ACgANAA4AAQAMAA8ADwAMAA0AEAANAAoADQAQAA8ACgARABAAEQAPABAACwARAAoAAQAFAAsAEQALAAUABQABAA8AEQASAA8AEgAFAA8AEgARAAUA"), 0.897429, PackedByteArray("BAADAAEAAQADAAIABAABAAUAAgADAAYABAAGAAMABgABAAIABgAEAAUABQABAAYA"), 1.27476, PackedByteArray("AAABAAIAAAACAAEAAwACAAAAAgADAAAA")],
+"name": "x1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("YSxIbJ3TAAD//5FM/38AAP9/S8+sMgAA/3///+2+AAC2wQiftsEAAP9/9xGB2gAAvglIbP9/AAB/rP//f1MAAO/cCJ//fwAA/39IbED2AAAAAJFM/38AAP9/kUz//wAAndNIbGEsAAD/f5FMAAAAAGEsSGxhLAAAndPaLGEsAAD/f/cRfSUAAFxdAABcXQAAoqIAAKKiAAARQf///38AAP9///8RQQAArLZLz1JJAABSzUvP/38AAP9/CJ/v3AAAQPZIbP9/AACd00hsndMAAJ3T2iyd0wAA/39IbL4JAABA9tos/38AAGEs2iyd0wAASD4In0g+AAD/f9osvgkAAH0l9xH/fwAAoqIAAFxdAAB/U///f6wAAH9T//9/UwAArDJLz/9/AABSSUvPrLYAAP9/S89SzQAAf6z//3+sAAAPIwif/38AAFJJS89SSQAASD4In7bBAAD/fwifDyMAAO2+////fwAArLZLz6y2AAC2wQifSD4AAIHakUyB2gAAgdqRTH0lAAB9JZFMgdoAAP9/2ixA9gAA/7/3Ef+/AAD/v/cR/z8AAIHa9xH/fwAA/38AAANPAAD7sAAA/38AAP8/9xH/PwAAYSzaLGEsAAB9JZFMfSUAAANPAAD/fwAA/38AAPuwAABcXQAAoqIAAP8/9xH/vwAAvgnaLP9/AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1mbhe"]
+resource_name = "mesh-1_Mesh0"
+_surfaces = [{
+"aabb": AABB(-1, -0.92388, -1, 2, 3.08888, 2),
+"format": 34896613383,
+"index_count": 372,
+"index_data": PackedByteArray("JgATACcAFQAmACcAKAAVACcAJwAUACgAFAAWACgAFgApACgAKgARACsAKwAXACoAKwARACwALAASACsALQAuAC8ALwAwAC0AMQAMAB4AHgAIADEAIQACADIAMgAzACEANAA1ADYAJQA0ADYANwA4ADkAOQA6ADcAOwA8AD0APgA8ADsAHwA/AEAAQABBAB8AQgBDAAQAQwBCAEQARQBGAEcARwAgAEUASABJAEoASgBLAEgABgAOAEwATABNAAYAJABOAE8AUABOACQAUQBSAFMAUwAAAFEAVAAdAAkACQBVAFQAVgAHAFcAWABXAAcAWQBaAFsAWwBcAFkAXQBeAF8AXwBgAF0ADQBhAGIAYgBjAA0AZAAbAGUAEAAbAGQAZgAjAGcAaABmAGcAaQBqAGsAbABrAGoAbQBuAG8AbgBtAHAAcQAiAHIAcgBzAHEAdAB1AAoACgB2AHQAdwB4ABgAGAB5AHcAegB7AHwAfAB9AHoAfgB/AIAAgACBAH4AHACCAIMAhAAcAIMAhQCGAIcAiACFAIcAiQCKAIsAiwCMAIkAjQCOAI8AkACNAI8AkQCSAJMAkwCUAJEACwCVAJYAlgCXAAsAmACZAJoAmgAFAJgAmwCcAJ0AnQADAJsAngCfAKAAoAChAJ4AogCjAKQApAClAKIApgCnAKgAGgCmAKgAqQCqAKsArACqAKkArQCuAK8ArwCwAK0AsQCyALMAtACxALMAtQC2ALcAtwC4ALUAuQC6ALsAuwC8ALkAAQAZAL0AvQC+AAEAvwDAAMEAwQDCAL8AwwDEAMUAxgDDAMUAxwDIAMkAyQDKAMcAywDMAM0AzQDOAMsAzwDQANEA0QDSAM8A0wDUANUA0wAPANQA1gDXANgA2ADZANYA2gDbANwA2gDdANsA3gDfAOAA4QDfAN4A4gDjAOQA5ADlAOIA5gDnAOgA5gDoAOkA6gDrAOwA7ADtAOoA7gDvAPAA8ADxAO4A"),
+"lods": [0.376381, PackedByteArray("EwAUABUAFAAWABUAFwARABIAEgARABgAEAARABcAEQAQABgAFwASABkAFwAPABAAGQAPABcAEgAFABkAEgAYAAUABQAaABkAAQAZABoAAQAPABkAGwAQAA8ACgAYABAAEAAbAAoAGAAcAAUAHAAYAAoAGgAFAAsACwAFABwADQAbAA8AGwANAAoADwAMAA0AAQAMAA8ACwAcAAAAAAAcAAoAHQAaAAsAGgAdAAEACwAJAB0AAAAJAAsAHQAeAAEAAQAeAAwABAAdAAkABAAeAB0AAAAfAAkACQAfAAQACAAMAB4ABAAIAB4AHwADAAQAHwAAAAMAIAAEAAMABAAgAAgAAwAHACAACAAgACEAIQAgAAcAAwAAACIAAgAhAAcAAgAIACEABwAjAAIAAgAjACIAJAAIAAIADAAIACQADQAMACQAJAACACUAJQACACIADQAkAA4AJQAOACQACgANAA4AJQAiAAYABgAOACUADgAGAAoABgAiAAAACgAGAAAA"), 0.484277, PackedByteArray("BAAHAAgABwAEAAMAAgAHAAMACAAHAAIABAAAAAMAAAAEAAkABAAIAAkACgADAAAAAgADAAoAAAAJAAsAAAALAAoACQAIAAEACQABAAsAAQAIAAwADQAIAAIADAAIAA0ACgAOAAIAAgAOAA0ACgANAA4AAQAMAA8ADwAMAA0AEAANAAoADQAQAA8ACgARABAAEQAPABAACwARAAoAAQAFAAsAEQALAAUABQABAA8AEQASAA8AEgAFAA8AEgARAAUA"), 0.897429, PackedByteArray("BAADAAEAAQADAAIABAABAAUAAgADAAYABAAGAAMABgABAAIABgAEAAUABQABAAYA"), 1.27476, PackedByteArray("AAABAAIAAAACAAEAAwACAAAAAgADAAAA")],
+"material": SubResource("StandardMaterial3D_0may2"),
+"name": "x1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 242,
+"vertex_data": PackedByteArray("YSxIbJ3T/7X//5FM/38r+P9/S8+sMojw/3///+2+DLO2wQiftsHu1f9/9xGB2ofJvglIbP9/yNR/rP//f1OG+u/cCJ//fwv6/39IbED22dgAAJFM/39P0P9/kUz//y+zndNIbGEsC/r/f5FMAAAe92EsSGxhLMjUndPaLGEsmP3/f/cRfSVG6lxdAABcXf//oqIAAKKi//8RQf///3////9///8RQf///3///+2+//9/rP//f1P//6KiAABcXf//fSX3Ef9/5+RA9tos/38r+J3T2iyd09rW/3/aLL4JRuphLNosndOcsJ3TSGyd09nYQPZIbP9/C/r/fwif79xis1LNS8//f8f8rLZLz1JJiPARQf///3830v9///8RQfP2/39IbL4JDO1IPgifSD5b939T//9/rP//f1P//39T//9/rP//f6z//+2+////f////38AAANP///7sAAA/3///wNPAAD/f////38AAPuw//+iogAAoqL//wNPAAD/f///XF0AAKKi//+2wQifSD4L+v9/CJ8PI4jwtsEIn0g+iPD/fwifDyNb9/9/S8+sMlv3UklLz1JJW/dSSUvPUkmF0qwyS8//f4XSDyMIn/9/hdJIPgifSD6F0lJJS8+stlWzDyMIn/9/VbOsMkvP/39Vs0g+CJ+2wVWzSD4In7bBYrNSSUvPrLZis/9/S89SzWKz/38In+/c7tWstkvPrLbu1f9/S89Sze7V79wIn/9/x/y2wQiftsHH/Ky2S8+stsf8rLZLz1JJaPq2wQifSD5o+u/cCJ//f2j6Us1Lz/9/aPpIPgifSD7I1A8jCJ//f8jUtsEIn0g+DO3/fwifDyMM7Z3TSGxhLAztvglIbP9//7UPIwif/3//tUg+CJ+2wf+1tsEIn7bB2dj/fwif79zZ2O2+////f4b6Us1Lz/9/hvqstkvPUkmG+v9/SGxA9gG2YSxIbJ3TAbZIPgiftsEBtv9/CJ/v3AG2SD4In0g+y/lhLEhsYSzL+f9/SGy+Ccv5/38Inw8jy/n/f0hsvgke92EsSGxhLB73fSWRTH0lHvf/P/cR/z9G6mEs2ixhLEbq/39Lz6wy8/Z/U///f1Pz9lJJS89SSfP2/3/aLL4Jgu7/f5FMAACC7mEs2ixhLILufSWRTH0lgu5cXQAAXF0D7v9/9xF9JQPu/z/3Ef8/A+7/fwAAA08D7n9T//9/UzfSrDJLz/9/N9JSSUvPUkk30mEs2ixhLE/QfSWRTH0lT9C+Cdos/39P0FxdAABcXefk/z/3Ef8/5+QDTwAA/3/n5AAAkUz/f1fSfSWRTH0lV9JhLEhsYSxX0r4JSGz/f1fS/z/3Ef8/2tZhLNosYSza1r4J2iz/f9rWfSX3Ef9/2ta+Cdos/3+csAAAkUz/f5ywfSWRTIHanLBcXQAAoqL95wNPAAD/f/3nfSX3Ef9//ef/P/cR/7/95wAAkUz/fx6zvglIbP9/HrNhLEhsndMes30lkUyB2h6z/z/3Ef+/iMF9JfcR/3+Iwb4J2iz/f4jBYSzaLJ3TiMGsMkvP/3/3shFB////f/eyf1P//3+s97JSSUvPrLb3sn0lkUyB2i+zYSxIbJ3TL7P/f0hsQPYvs/8/9xH/v4fJYSzaLJ3Th8n/f9osQPaHyf9/S89SzQyzUklLz6y2DLN/U///f6wMs2Es2iyd0yqzfSWRTIHaKrP/f5FM//8qs/9/2ixA9iqzXF0AAKKigu7/P/cR/7+C7v9/9xGB2oLu/38AAPuwgu7/v/cR/7/a1v9/9xGB2trW/3/aLED22tb/f0vPUs2C1X+s//9/rILVrLZLz6y2gtX/f///7b6C1Z3T2iyd0zfR/3/aLED2N9H/f5FM//830YHakUyB2jfRoqIAAKKiJOX/fwAA+7Ak5f9/9xGB2iTl/7/3Ef+/JOX/f5FM//+v1f9/SGxA9q/VndNIbJ3Tr9WB2pFMgdqv1VLNS8//f578rLZLz6y2nvx/rP//f6ye/O2+////f578ndPaLJ3TK/iB2pFMgdor+KKiAACiojjx/7/3Ef+/OPGB2vcR/3848fuwAAD/fzjxndNIbJ3Tr/xA9khs/3+v/P//kUz/f6/8gdqRTIHar/xA9tos/3+W8oHa9xH/f5by/7/3Ef+/lvKd09osndOW8qKiAABcXcr/+7AAAP9/yv+B2vcR/3/K//+/9xH/P8r/ndNIbGEsefqB2pFMfSV5+v//kUz/f3n6QPZIbP9/efpA9tos/3+Y/f+/9xH/P5j9gdr3Ef9/mP1/rP//f1Md8f9///8RQR3x/39Lz6wyHfGstkvPUkkd8f//kUz/f+z+ndPaLGEs7P5A9tos/3/s/oHakUx9Jez+/3+RTAAA3/Cd00hsYSzf8P9/SGy+Cd/wgdqRTH0l3/D/v/cR/z/h+J3T2ixhLOH4/3/aLL4J4fj/f/cRfSXh+LbBCJ+2wbH979wIn/9/sf1A9khs/3+x/Z3TSGyd07H9ndPaLGEscf2B2pFMfSVx/f9/kUwAAHH9/3/aLL4Jcf2iogAAXF359v+/9xH/P/n2/3/3EX0l+fb/fwAAA0/59pmAV9iLrJ5xwMbnT3169qG2mWh+Ylz1dGNzq9iiyQ+FasSejMKafIR/b4j663o9omrEnozVUofDY3Or2H8fQMvlTlPg/3//P/9//z//f/+//3//v/9//7//f/+//3//P2a1M/2LrJ5xpIBvW+VOU+C5Z1Tzwpp8hGrEnoyEe6CiFbCzh8DG50/WdC3hwVKow3bGVUzyUlvD/3//v/9//7//f/+//3//v/9//z//f/8//3//P/9//z//f/8//3//P/9//z9qxJ6MwMbnT8DG50/yUlvD8lJbw/JSW8OhdOTfoXTk36F05N+hdOTfCH5v3gh+b94Ifm/eCH5v3oR7oKKEe6CihHugoraZaH62mWh+tplofhWws4cVsLOHFbCzh/LIG4byyBuG8sgbhvLIG4Zjc6vYY3Or2HbGVUx2xlVMdsZVTJmAV9iZgFfYmYBX2MKafITCmnyEoskPhaLJD4WiyQ+FdoGPpXaBj6V2gY+ldoGPpVdU28FXVNvBV1TbwVdU28HVUofD1VKHw9VSh8PlTlPg5U5T4MFSqMPBUqjDwVKowydRb88nUW/PJ1FvzydRb88oS2TwKEtk8ChLZPAoS2Tw1nQt4dZ0LeHWdC3hf2+I+n9viPp/b4j6ZrUz/Wa1M/1mtTP9wHSi4MB0ouDAdKLgwHSi4Jhbu/+YW7v/mFu7/5hbu/+5Z1TzuWdU87lnVPPCyrb0wsq29MLKtvTCyrb0wX333sF9997BfffewX333jVIP/01SD/9NUg//TVIP/2OfVnfjn1Z3459Wd+OfVnf63o9out6PaLrej2iYlz1dGJc9XRiXPV0fXr2oX169qF9evah3GNtkNxjbZDcY22Q3GNtkO1riVzta4lc7WuJXO1riVykgG9bpIBvW6SAb1swmWp9MJlqfTCZan0wmWp9l4yuapeMrmqXjK5ql4yuahp7pFIae6RSGnukUhp7pFJomdR9aJnUfWiZ1H1omdR9f7DJhn+wyYZ/sMmGf7DJhousnnGLrJ5xzZEuUM2RLlDNkS5QzZEuUFOwLIdTsCyHU7Ash1OwLIdDoFNfQ6BTX0OgU19DoFNfmDA935gwPd+YMD3fmDA931nJf4VZyX+FWcl/hVnJf4V/H0DLfx9Ay38fQMu5xlZQucZWULnGVlC5xlZQ58IKcefCCnHnwgpx58IKcb3GKVC9xilQvcYpUL3GKVC6MSrKujEqyroxKsq6MSrKga3/jIGt/4yBrf+Mga3/jAzCTlMMwk5TDMJOUwzCTlNfO1bfXztW3187Vt9fO1bf")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5axvk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygoj8"]
+size = Vector3(0.25, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_futwn"]
+size = Vector3(0.25, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g46sn"]
+size = Vector3(0.25, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j03t0"]
+size = Vector3(0.25, 1, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6087r"]
+size = Vector3(11.9355, 4.15857, 12.0146)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2g3d"]
+size = Vector3(17.9783, 1, 17.9844)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l8748"]
+size = Vector3(0.480225, 1.01752, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ua1uq"]
+size = Vector3(1.50812, 1, 2.50903)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_diorr"]
+size = Vector3(0.979004, 3.28015, 0.481812)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qrse"]
+size = Vector3(0.471619, 3.25574, 3.00708)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8wwn"]
+size = Vector3(0.526855, 3.30762, 0.49704)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_einnk"]
+size = Vector3(4.98535, 3.29443, 0.496681)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ei2hl"]
+size = Vector3(0.50708, 3.25537, 1.52136)
+
+[node name="Room4Floor1" type="Node3D"]
+script = ExtResource("1_h68i0")
+
+[node name="Room" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Floor" type="Node3D" parent="Room"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Floor"]
+transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 16, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_re4l4")
+mesh = SubResource("BoxMesh_y0srs")
+skeleton = NodePath("../../..")
+
+[node name="Walls" type="Node3D" parent="Room"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-2.62268e-07, -1, 0, 6, -4.37114e-08, 0, 0, 0, 8, -8.5, 2.5, -5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-2.62268e-07, -1, 0, 6, -4.37114e-08, 0, 0, 0, 8, -8.5, 2.5, 5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1.14641e-14, 4.37114e-08, 8, 6, -4.37114e-08, 0, 2.62268e-07, 1, -3.49691e-07, -5, 2.5, 8.5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1.14641e-14, 4.37114e-08, 8, 6, -4.37114e-08, 0, 2.62268e-07, 1, -3.49691e-07, 5, 2.5, 8.5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(2.62268e-07, 1, -1.20797e-06, 6, -4.37114e-08, 3.38813e-21, -3.96014e-14, -1.50996e-07, -8, 8.5, 2.5, 5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(2.62268e-07, 1, -1.20797e-06, 6, -4.37114e-08, 3.38813e-21, -3.96014e-14, -1.50996e-07, -8, 8.5, 2.5, -5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1.14641e-14, 4.37114e-08, 8, 6, -4.37114e-08, 0, 2.62268e-07, 1, -3.49691e-07, 5, 2.5, -8.5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1.14641e-14, 4.37114e-08, 8, 6, -4.37114e-08, 0, 2.62268e-07, 1, -3.49691e-07, -5, 2.5, -8.5)
+material_override = SubResource("ShaderMaterial_25eig")
+mesh = SubResource("BoxMesh_pha88")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 4.5, -8.5)
+material_override = SubResource("ShaderMaterial_aab55")
+mesh = SubResource("BoxMesh_vnbj2")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 4.5, 8.5)
+material_override = SubResource("ShaderMaterial_aab55")
+mesh = SubResource("BoxMesh_vnbj2")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-8.74228e-08, 1, -8.74228e-08, 0, -4.37114e-08, -2, -2, -4.37114e-08, 3.82137e-15, -8.5, 4.5, 0)
+material_override = SubResource("ShaderMaterial_aab55")
+mesh = SubResource("BoxMesh_vnbj2")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-8.74228e-08, 1, -8.74228e-08, 0, -4.37114e-08, -2, -2, -4.37114e-08, 3.82137e-15, 8.5, 4.5, 0)
+material_override = SubResource("ShaderMaterial_aab55")
+mesh = SubResource("BoxMesh_vnbj2")
+
+[node name="Ceiling" type="Node3D" parent="Room"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Ceiling"]
+transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 16, 0, 6, 0)
+material_override = SubResource("ShaderMaterial_e8f74")
+mesh = SubResource("BoxMesh_mkfgh")
+
+[node name="LabyrinthOuterWalls1" type="Node3D" parent="Room"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls1"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="LabyrinthOuterWalls2" type="Node3D" parent="Room"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls2"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="LabyrinthOuterWalls3" type="Node3D" parent="Room"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls3"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="LabyrinthOuterWalls4" type="Node3D" parent="Room"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -2.25)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 1.75, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(2, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7, 4.25, -4.75)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 2.25, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 1.75, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/LabyrinthOuterWalls4"]
+transform = Transform3D(-8.74228e-08, 0, 2.5, 0, 2.5, 0, -2, 0, -1.09278e-07, 4.75, 4.25, -7)
+material_override = SubResource("ShaderMaterial_53jiy")
+mesh = SubResource("BoxMesh_ffcao")
+
+[node name="LabyrinthMiddleWalls" type="Node3D" parent="Room"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D47" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D48" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D49" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D50" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D51" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D52" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D53" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D54" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D55" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D56" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D57" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D58" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D59" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D60" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D61" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D62" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D63" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D64" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D65" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D66" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D67" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D68" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D69" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D70" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D71" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D72" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D73" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D74" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D75" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D76" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D77" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D78" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D79" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D80" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D81" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D82" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D83" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D84" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D85" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D86" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D87" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D88" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D89" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D90" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D91" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D92" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D93" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D94" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D95" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D96" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D97" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D98" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D99" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D100" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D101" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D102" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D103" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D104" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D105" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D106" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D107" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D108" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D109" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D110" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D111" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D112" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D113" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D114" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D115" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D116" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D117" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D118" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D119" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D120" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D121" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D122" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D123" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D124" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D125" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D126" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D127" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D128" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D129" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D130" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D131" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D132" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D133" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D134" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D135" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D136" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D137" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D138" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D139" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D140" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D141" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D142" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D143" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D144" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D145" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D146" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D147" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D148" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D149" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D150" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D151" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D152" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D153" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D154" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D155" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D156" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D157" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D158" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D159" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D160" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D161" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D162" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D163" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D164" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D165" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D166" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D167" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, 4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D168" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, 3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D169" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D170" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D171" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D172" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D173" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D174" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D175" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, -3.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D176" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D177" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D178" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D179" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="MeshInstance3D180" type="MeshInstance3D" parent="Room/LabyrinthMiddleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5, -4.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+
+[node name="LabyrinthInnerWalls" type="Node3D" parent="Room"]
+
+[node name="MeshInstance3D181" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D182" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D183" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D184" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D185" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D186" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D187" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D188" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D189" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D190" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D191" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D192" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D193" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D194" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D195" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D196" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D197" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D198" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D199" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D200" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D201" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D202" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D203" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D204" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D205" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D206" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D207" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D208" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D209" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D210" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D211" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D212" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D213" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D214" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D215" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D216" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D217" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D218" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D219" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D220" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D221" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D222" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D223" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D224" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D225" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D226" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D227" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D228" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D229" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D230" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D231" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D232" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D233" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D234" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D235" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D236" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D237" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D238" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D239" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D240" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D241" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D242" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D243" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D244" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D245" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D246" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D247" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D248" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D249" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D250" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D251" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D252" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 4, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D253" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D254" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D255" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D256" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D257" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D258" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D259" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D260" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D261" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D262" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D263" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, -2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D264" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, -1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D265" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, -0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D266" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D267" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, 1.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D268" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D269" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D270" type="MeshInstance3D" parent="Room/LabyrinthInnerWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5, 2.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="InnerWall" type="Node3D" parent="Room"]
+
+[node name="MeshInstance3D271" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D272" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D273" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D274" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D275" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D276" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D277" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D278" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D279" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="MeshInstance3D280" type="MeshInstance3D" parent="Room/InnerWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, 0.5)
+material_override = SubResource("ShaderMaterial_qmmcs")
+mesh = SubResource("BoxMesh_wwfqf")
+skeleton = NodePath("../../LabyrinthMiddleWalls")
+
+[node name="LightBulb" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18574, -1)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_energy = 2.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb2" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.18574, -1)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb2"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb2"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb2"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb3" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.18574, 0)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb3"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb3"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb3"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb6" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.18574, -5.5)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb6"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb6"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb6"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb7" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.18574, -5.5)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb7"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb7"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb7"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb8" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.18574, 5.5)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb8"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb8"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb8"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb9" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.18574, 5.5)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb9"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb9"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb9"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb4" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18574, -3.5)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb4"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb4"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb4"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="LightBulb5" type="Node3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18574, 3.5)
+
+[node name="LightBulb_Light" type="OmniLight3D" parent="Room/LightBulb5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.78334, 0)
+layers = 3
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 5.364
+light_specular = 16.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_shadow = 1530.83
+distance_fade_length = 1779.07
+omni_range = 9.003
+omni_attenuation = 2.323
+script = ExtResource("6_mm254")
+
+[node name="Node0" type="MeshInstance3D" parent="Room/LightBulb5"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.62912, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_fe765")
+skeleton = NodePath("")
+
+[node name="Node1" type="MeshInstance3D" parent="Room/LightBulb5"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 3.75739, 0)
+material_override = SubResource("ShaderMaterial_5bbfn")
+mesh = SubResource("ArrayMesh_rbed0")
+skeleton = NodePath("")
+
+[node name="Node2" type="MeshInstance3D" parent="Room/LightBulb5"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.000388771, 3.64769, 0)
+transparency = 0.9
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_1mbhe")
+skeleton = NodePath("")
+
+[node name="Areas" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="North" type="Area3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/North"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_ygoj8")
+
+[node name="West" type="Area3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/West"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_futwn")
+
+[node name="East" type="Area3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/East"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+shape = SubResource("BoxShape3D_g46sn")
+
+[node name="South" type="Area3D" parent="Areas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/South"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_j03t0")
+
+[node name="CorridorsSpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="NorthCorridor" type="Marker3D" parent="CorridorsSpawnPoints"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -13)
+
+[node name="WestCorridor" type="Marker3D" parent="CorridorsSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+
+[node name="EastCorridor" type="Marker3D" parent="CorridorsSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+
+[node name="SouthCorridor" type="Marker3D" parent="CorridorsSpawnPoints"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 13)
+
+[node name="RoomArea" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57928, 0)
+shape = SubResource("BoxShape3D_6087r")
+
+[node name="Doors" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 6, 0)
+
+[node name="NorthDoor" parent="Doors" instance=ExtResource("9_ygoj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676573, -12.4875, -8.6)
+
+[node name="SouthDoor" parent="Doors" instance=ExtResource("9_ygoj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.710253, -12.5011, 8.5278)
+
+[node name="WestDoor" parent="Doors" instance=ExtResource("9_ygoj8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.55917, -12.4702, 0.683234)
+
+[node name="EastDoor" parent="Doors" instance=ExtResource("9_ygoj8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, -12.4915, 0.713676)
+
+[node name="Barriers" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Floor"]
+shape = SubResource("BoxShape3D_b2g3d")
+
+[node name="Wall" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22789, 0, 0)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00427246, 2.24698, 0)
+shape = SubResource("BoxShape3D_l8748")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Barriers/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, 1.75123)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Barriers/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, -1.74877)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="Wall2" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.27211, 0, 0)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00427246, 2.24698, 0)
+shape = SubResource("BoxShape3D_l8748")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Barriers/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, 1.75123)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Barriers/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, -1.74877)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="Wall3" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.0180114, 0, -4.25943)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00427246, 2.24698, 0)
+shape = SubResource("BoxShape3D_l8748")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Barriers/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, 1.75123)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Barriers/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, -1.74877)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="Wall4" type="StaticBody3D" parent="Barriers"]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -0.0180114, 0, 4.24495)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00427246, 2.24698, 0)
+shape = SubResource("BoxShape3D_l8748")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Barriers/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, 1.75123)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Barriers/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490265, 0, -1.74877)
+shape = SubResource("BoxShape3D_ua1uq")
+
+[node name="Labirinth" type="StaticBody3D" parent="Barriers"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119629, 1.14008, 0.249573)
+shape = SubResource("BoxShape3D_diorr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25522, 1.12787, -0.00183105)
+shape = SubResource("BoxShape3D_8qrse")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24478, 1.12787, -0.00183105)
+shape = SubResource("BoxShape3D_8qrse")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0166413, 1.12787, -1.25934)
+shape = SubResource("BoxShape3D_8qrse")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783936, 1.15381, 1.24553)
+shape = SubResource("BoxShape3D_u8wwn")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.716064, 1.15381, 1.24553)
+shape = SubResource("BoxShape3D_u8wwn")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102539, 1.14722, 2.24987)
+shape = SubResource("BoxShape3D_einnk")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102539, 1.14722, -2.25013)
+shape = SubResource("BoxShape3D_einnk")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 2.24998, 1.14722, -0.000422001)
+shape = SubResource("BoxShape3D_einnk")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25574, 1.12769, -1.26276)
+shape = SubResource("BoxShape3D_ei2hl")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Barriers/Labirinth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25574, 1.12769, 1.25713)
+shape = SubResource("BoxShape3D_ei2hl")
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="EnemiesSpawnpoints" type="Node3D" parent="."]
+
+[node name="Marker3D5" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00756894, 1.46948, -0.524507)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D6" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73516, 1.46948, -2.73628)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D7" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70892, 1.46948, -2.73628)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D8" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70892, 1.46948, 2.7078)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[node name="Marker3D9" type="Marker3D" parent="EnemiesSpawnpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73516, 1.46948, 2.7078)
+script = ExtResource("10_futwn")
+enemy_type = "Pipe"
+
+[connection signal="area_entered" from="Areas/North" to="." method="_on_north_area_entered"]
+[connection signal="area_entered" from="Areas/West" to="." method="_on_west_area_entered"]
+[connection signal="area_entered" from="Areas/East" to="." method="_on_east_area_entered"]
+[connection signal="area_entered" from="Areas/South" to="." method="_on_south_area_entered"]
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
+[connection signal="child_exiting_tree" from="Enemies" to="." method="_on_enemies_child_exiting_tree"]

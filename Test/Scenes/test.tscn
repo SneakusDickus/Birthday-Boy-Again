@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=3 uid="uid://blmkyykvhhacr"]
+
+[ext_resource type="PackedScene" uid="uid://w8x5jw8avowq" path="res://Player/Scenes/player.tscn" id="1_xep22"]
+[ext_resource type="Script" uid="uid://cf7c21rwjgrhk" path="res://Test/Script/cube.gd" id="2_a2fa0"]
+[ext_resource type="PackedScene" uid="uid://cba3dn2iq70n1" path="res://Enemies/EnemyPipe/Scene/enemy_pipe.tscn" id="3_1wp82"]
+[ext_resource type="PackedScene" uid="uid://c28yd82oyufll" path="res://Enemies/EnemyPistol/Scenes/enemy_pistol.tscn" id="4_kkq55"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a2fa0"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_1wp82"]
+sky_material = SubResource("ProceduralSkyMaterial_a2fa0")
+
+[sub_resource type="Environment" id="Environment_kkq55"]
+background_mode = 2
+sky = SubResource("Sky_1wp82")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wsnvj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xep22"]
+size = Vector3(2.00171, 0.00714111, 1.96484)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xep22"]
+render_priority = -1
+albedo_color = Color(0.713238, 0.494345, 0.318538, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xep22"]
+material = SubResource("StandardMaterial3D_xep22")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a2fa0"]
+
+[node name="Test" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_kkq55")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+layers = 3
+light_cull_mask = 4294967291
+shadow_enabled = true
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(376.64, 0, 0, 0, 1, 0, 0, 0, 376.64, 0, 0, 0)
+mesh = SubResource("PlaneMesh_wsnvj")
+
+[node name="plane_collider" type="StaticBody3D" parent="Plane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/plane_collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014679, 0.0147705)
+shape = SubResource("BoxShape3D_xep22")
+
+[node name="Player" parent="." instance=ExtResource("1_xep22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18416, 0, -6.98415)
+
+[node name="Objects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999956, -0.00935483, 0, 0.00935483, 0.999956, 0, 0, 0)
+
+[node name="cube1" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.733, 0.5, 4)
+mesh = SubResource("BoxMesh_xep22")
+script = ExtResource("2_a2fa0")
+
+[node name="cube_collider_target" type="StaticBody3D" parent="Objects/cube1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/cube1/cube_collider_target"]
+shape = SubResource("BoxShape3D_a2fa0")
+
+[node name="cube2" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.266889, 0.501667, 5)
+mesh = SubResource("BoxMesh_xep22")
+script = ExtResource("2_a2fa0")
+
+[node name="cube_collider_target" type="StaticBody3D" parent="Objects/cube2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/cube2/cube_collider_target"]
+shape = SubResource("BoxShape3D_a2fa0")
+
+[node name="cube3" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73311, 0.494222, 6)
+mesh = SubResource("BoxMesh_xep22")
+script = ExtResource("2_a2fa0")
+
+[node name="cube_collider_target" type="StaticBody3D" parent="Objects/cube3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/cube3/cube_collider_target"]
+shape = SubResource("BoxShape3D_a2fa0")
+
+[node name="EnemyPipe" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(-0.866025, 1.81e-06, 0.5, -1.81e-06, 1, -6.75499e-06, -0.5, -6.75499e-06, -0.866025, -0.442876, 3.85393, 5.15986)
+
+[node name="EnemyPipe2" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(-0.866025, 1.81e-06, 0.5, -1.81e-06, 1, -6.75499e-06, -0.5, -6.75499e-06, -0.866025, 4.75864, 3.85393, 7.01839)
+
+[node name="EnemyPipe3" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(-0.866025, 1.81e-06, 0.5, -1.81e-06, 1, -6.75499e-06, -0.5, -6.75499e-06, -0.866025, 8.26914, 3.85393, 3.38307)
+
+[node name="EnemyPipe4" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(-0.866025, 1.81e-06, 0.5, -1.81e-06, 1, -6.75499e-06, -0.5, -6.75499e-06, -0.866025, 4.83599, 3.85393, 1.92664)
+
+[node name="EnemyPipe5" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(-0.866025, 1.81e-06, 0.5, -1.81e-06, 1, -6.75499e-06, -0.5, -6.75499e-06, -0.866025, 7.09113, 3.85393, 10.9364)
+
+[node name="EnemyPipe6" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(-0.866025, 1.81e-06, 0.5, -1.81e-06, 1, -6.75499e-06, -0.5, -6.75499e-06, -0.866025, 1.78643, 3.85393, 10.5685)
+
+[node name="EnemyPipe7" parent="." instance=ExtResource("3_1wp82")]
+transform = Transform3D(-0.866025, 1.81e-06, 0.5, -1.81e-06, 1, -6.75499e-06, -0.5, -6.75499e-06, -0.866025, 8.56164, 3.85393, 7.04898)
+
+[node name="EnemyPistol" parent="." instance=ExtResource("4_kkq55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68913, 2.82232, 5.69622)
