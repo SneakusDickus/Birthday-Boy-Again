@@ -388,7 +388,6 @@ material_override = SubResource("ShaderMaterial_pgnbc")
 mesh = SubResource("BoxMesh_k3m5g")
 
 [node name="Ceiling" type="Node3D" parent="Room"]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Ceiling"]
 transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 16, 0, 6, 0)
@@ -639,6 +638,7 @@ shape = SubResource("BoxShape3D_x7dy1")
 
 [node name="Wall" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24841, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.254, 0)
@@ -658,6 +658,7 @@ shape = SubResource("BoxShape3D_caqhl")
 
 [node name="Wall2" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25159, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.254, 0)
@@ -677,6 +678,7 @@ shape = SubResource("BoxShape3D_caqhl")
 
 [node name="Wall3" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -0.0070703, 0, 4.24025)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.254, 0)
@@ -696,6 +698,7 @@ shape = SubResource("BoxShape3D_caqhl")
 
 [node name="Wall4" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -0.0070703, 0, -4.2609)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.254, 0)

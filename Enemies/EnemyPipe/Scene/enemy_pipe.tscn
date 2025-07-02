@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cba3dn2iq70n1"]
+[gd_scene load_steps=28 format=4 uid="uid://cba3dn2iq70n1"]
 
 [ext_resource type="Material" uid="uid://cny7qe1qsc32u" path="res://Enemies/EnemyPipe/Models/new_shader_material.tres" id="1_iu8d8"]
 [ext_resource type="Script" uid="uid://brck65nvsuto7" path="res://Enemies/EnemyPipe/Script/enemy_pipe.gd" id="1_q5dh8"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://d6mn8yl8eagl" path="res://Enemies/CoomonEnemyScript/enemy_collider.gd" id="6_dkw70"]
 [ext_resource type="PackedScene" uid="uid://crh6bs4ujmqu1" path="res://Enemies/CommonEnemyScene/enemy_hp.tscn" id="6_ppoyr"]
 [ext_resource type="PackedScene" uid="uid://crnfjc42vdxrl" path="res://Enemies/ItemDrop/Scene/item_dropper.tscn" id="8_r8hpu"]
+[ext_resource type="AudioStream" uid="uid://y1gxl512ujjg" path="res://Sounds/bba_concept_sfx/enemy_death.ogg" id="9_rml6a"]
+[ext_resource type="AudioStream" uid="uid://ciug85elt1ey2" path="res://Sounds/bba_concept_sfx/enemy_meleepunch.ogg" id="10_loyrr"]
+[ext_resource type="AudioStream" uid="uid://nhd8e4vwaggw" path="res://Sounds/bba_concept_sfx/enemy_hurt.ogg" id="11_3mino"]
+[ext_resource type="AudioStream" uid="uid://gopuejq1ovs" path="res://Sounds/bba_concept_sfx/enemy_spawn.ogg" id="12_loyrr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iu8d8"]
 radius = 0.19888
@@ -984,6 +988,28 @@ enemy_head_area = NodePath("../Rig2/Skeleton3D/HeadHitBox/Node3D/EnemyHead")
 
 [node name="ItemDropper" parent="." node_paths=PackedStringArray("enemy_hp_node") instance=ExtResource("8_r8hpu")]
 enemy_hp_node = NodePath("../EnemyHp")
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("9_rml6a")
+volume_db = 1.25
+bus = &"SFX"
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("10_loyrr")
+volume_db = 1.25
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("11_3mino")
+volume_db = 1.5
+bus = &"SFX"
+
+[node name="SpawnSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("12_loyrr")
+volume_db = 1.5
+bus = &"SFX"
 
 [connection signal="body_entered" from="Rig2/Skeleton3D/PipeBone/Pipe/AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

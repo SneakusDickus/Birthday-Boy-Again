@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn7bq2ps8ebvg"]
+[gd_scene load_steps=6 format=3 uid="uid://dn7bq2ps8ebvg"]
 
 [ext_resource type="PackedScene" uid="uid://dmvvwpsomam4k" path="res://GenerationLevel/Scenes/Level.tscn" id="1_phcqk"]
 [ext_resource type="Environment" uid="uid://ca3oi3y87vtas" path="res://Source/word_environment.tres" id="2_5q1xy"]
 [ext_resource type="PackedScene" uid="uid://w8x5jw8avowq" path="res://Player/Scenes/player.tscn" id="3_jn1uj"]
+[ext_resource type="AudioStream" uid="uid://cicg374x10etc" path="res://Sounds/bba_concept_music/floor1.ogg" id="4_m4rjt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m4rjt"]
+size = Vector3(1151.83, 1, 835.377)
 
 [node name="MainGame" type="Node3D"]
 
@@ -19,5 +23,18 @@ visible = false
 layers = 3
 light_energy = 0.2
 
-[node name="Player" parent="." instance=ExtResource("3_jn1uj")]
+[node name="Player" parent="." node_paths=PackedStringArray("floor_music") instance=ExtResource("3_jn1uj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99138, 0)
+floor_music = NodePath("../Floor1Music")
+
+[node name="Floor1Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m4rjt")
+autoplay = true
+bus = &"Music"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.6423, 0)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_m4rjt")

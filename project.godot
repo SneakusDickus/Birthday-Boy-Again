@@ -15,6 +15,10 @@ run/main_scene="uid://dn7bq2ps8ebvg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Sounds/Bus/default_bus_layout.tres"
+
 [autoload]
 
 PlayerData="*res://Player/Script/player_data.gd"
@@ -27,6 +31,7 @@ folder_colors={
 "res://MainGame/": "red",
 "res://Player/": "orange",
 "res://Rooms/": "green",
+"res://Sounds/": "pink",
 "res://Source/": "purple",
 "res://Textures/": "purple"
 }

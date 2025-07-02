@@ -1,10 +1,21 @@
 extends CharacterBody3D
 
+@export var floor_music: AudioStreamPlayer
+
 @onready var camera_head := $Head
 @onready var camera := $Head/MainCamera
 @onready var anim_tree := $Head/AnimationTree
 @onready var shoot_timer := $ShootDelay
 @onready var particle_fire := $Head/Vfx/Fire
+
+@onready var sounds: Dictionary[String, AudioStreamPlayer] = {
+	"death" : $Sounds/DeathSound,
+	"shoot" : $Sounds/ShootSound,
+	"hurt" : $Sounds/HurtSound,
+	"reload" : $Sounds/ReloadSound,
+	"heal" : $Sounds/HealSound,
+	"ammo" : $Sounds/AmmoSound
+}
 
 signal get_damage(damage: int)
 
@@ -12,6 +23,7 @@ enum {
 	IDLE,
 	WALK
 }
+
 var is_dead := false
 
 var currrent_animation = IDLE
@@ -102,11 +114,13 @@ func handle_animation(delta):
 func update_tree():
 	anim_tree["parameters/run/blend_amount"] = walk_val
 	if Input.is_action_just_pressed("reload") and can_reload:
+		sounds["reload"].play()
 		anim_tree.set('parameters/reload/request', AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		can_shoot = false
 		can_reload = false
 		shoot_timer.stop()
 	if Input.is_action_just_pressed("shoot") and can_shoot and current_ammo > 0:
+		sounds["shoot"].play()
 		anim_tree.set("parameters/fire/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		particle_fire.emitting = true
 		shoot()
@@ -165,15 +179,21 @@ func _on_get_damage(damage: int) -> void:
 	PlayerData.hp -= damage
 	if PlayerData.hp <= 0:
 		is_dead = true
+		floor_music.stop()
+		sounds["death"].play()
+	else:
+		sounds["hurt"].play()
 
 
 func get_ammo():
+	sounds["ammo"].play()
 	PlayerData.current_ammo += randi_range(2, 5)
 	if current_ammo < PlayerData.max_ammo:
 		can_reload = true
 
 
 func get_hp():
+	sounds["heal"].play()
 	PlayerData.hp += randi_range(2, 7)
 	if PlayerData.hp > PlayerData.max_hp:
 		PlayerData.hp = PlayerData.max_hp

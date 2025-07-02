@@ -1,11 +1,17 @@
-[gd_scene load_steps=60 format=4 uid="uid://w8x5jw8avowq"]
+[gd_scene load_steps=67 format=4 uid="uid://w8x5jw8avowq"]
 
 [ext_resource type="Script" uid="uid://btad41g2qt1jo" path="res://Player/Script/player.gd" id="1_52sos"]
 [ext_resource type="Texture2D" uid="uid://bvnnlraikm57h" path="res://Player/Models/pistol/Pistol_0.png" id="1_rg7kn"]
 [ext_resource type="Texture2D" uid="uid://hdvjm3t6q7rs" path="res://Player/Models/pistol/Pistol_1.png" id="2_52sos"]
 [ext_resource type="PackedScene" uid="uid://ldso3yiikkq8" path="res://Player/UI/player_ui.tscn" id="2_bw35f"]
 [ext_resource type="Shader" uid="uid://bgpv57ytjsk5h" path="res://Player/Shaders/player.gdshader" id="2_omv0o"]
+[ext_resource type="AudioStream" uid="uid://58cl1j212bff" path="res://Sounds/bba_concept_sfx/john_death.ogg" id="7_2hb64"]
 [ext_resource type="Material" uid="uid://b7a678anec72x" path="res://Textures/Explosion/flare_material.tres" id="7_qo0kk"]
+[ext_resource type="AudioStream" uid="uid://b3frc1of26mls" path="res://Sounds/bba_concept_sfx/john_gunshot.ogg" id="8_qsune"]
+[ext_resource type="AudioStream" uid="uid://dupbbgkcs63mn" path="res://Sounds/bba_concept_sfx/john_hurt.ogg" id="9_vov0p"]
+[ext_resource type="AudioStream" uid="uid://dxyor3v5402vf" path="res://Sounds/bba_concept_sfx/reload_gun.ogg" id="10_vov0p"]
+[ext_resource type="AudioStream" uid="uid://bwd1f5bdtfw82" path="res://Sounds/bba_concept_sfx/pickup_health.ogg" id="11_n8jjm"]
+[ext_resource type="AudioStream" uid="uid://cab085lkwoms5" path="res://Sounds/bba_concept_sfx/pickup_ammo.ogg" id="12_b4k72"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bw35f"]
 render_priority = 0
@@ -9587,6 +9593,9 @@ tracks/71/interp = 1
 tracks/71/loop_wrap = true
 tracks/71/keys = PackedFloat32Array(0, 1, 1, 0.999998, 1.00001)
 
+[sub_resource type="Animation" id="Animation_vov0p"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_xwb2w"]
 resource_name = "dead"
 
@@ -9610,6 +9619,7 @@ _data = {
 &"Pistol_RUN_EMPTY": SubResource("Animation_qvwb4"),
 &"Pistol_WALK": SubResource("Animation_8gg38"),
 &"Pistol_WALK_EMPTY": SubResource("Animation_t81vd"),
+&"RESET": SubResource("Animation_vov0p"),
 &"dead": SubResource("Animation_xwb2w")
 }
 
@@ -9632,7 +9642,7 @@ animation = &"Pistol_RELOAD"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_52sos"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_omv0o"]
-graph_offset = Vector2(-613.083, -135.471)
+graph_offset = Vector2(-347.945, -84.2836)
 nodes/fire/node = SubResource("AnimationNodeOneShot_bw35f")
 nodes/fire/position = Vector2(80, -80)
 nodes/fire_animation/node = SubResource("AnimationNodeAnimation_bw35f")
@@ -9736,8 +9746,8 @@ bones/1/name = "pec"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422288, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0, 0.424093, 0)
-bones/1/rotation = Quaternion(0.000467726, 0, 0, 1)
+bones/1/position = Vector3(0, 0.42248, 0)
+bones/1/rotation = Quaternion(0.000922417, 0, 0, 1)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Shoulder_R"
 bones/2/parent = 1
@@ -9772,7 +9782,7 @@ bones/6/parent = 4
 bones/6/rest = Transform3D(0.979232, 0.202791, -1.32574e-06, -0.202393, 0.977292, -0.0627853, -0.0127311, 0.0614809, 0.998031, 0.0105602, -0.004099, 0.21602)
 bones/6/enabled = true
 bones/6/position = Vector3(0.0105602, -0.004099, 0.21602)
-bones/6/rotation = Quaternion(-0.275283, 0.274835, 0.220355, 0.894499)
+bones/6/rotation = Quaternion(-0.27483, 0.274947, 0.220222, 0.894637)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Thumb_Proximal_R"
 bones/7/parent = 6
@@ -9926,21 +9936,21 @@ bones/28/parent = 27
 bones/28/rest = Transform3D(0.876078, -0.00637257, 0.482102, 0.184976, 0.927839, -0.323877, -0.445248, 0.372927, 0.814039, 0.0116798, -0.046649, 0.0904445)
 bones/28/enabled = true
 bones/28/position = Vector3(0.0116792, -0.046649, 0.0904447)
-bones/28/rotation = Quaternion(0.454876, 0.839509, 0.0939605, 0.281928)
+bones/28/rotation = Quaternion(0.45494, 0.839556, 0.0937974, 0.281739)
 bones/28/scale = Vector3(0.99999, 0.99999, 0.99999)
 bones/29/name = "LowerArm_L"
 bones/29/parent = 28
 bones/29/rest = Transform3D(1.00001, -2.79334e-06, -5.47733e-06, 5.80821e-07, 0.92977, -0.36813, 6.12105e-06, 0.368128, 0.929774, 0.000967028, -0.00206505, 0.194602)
 bones/29/enabled = true
 bones/29/position = Vector3(0.0009671, -0.0020652, 0.194601)
-bones/29/rotation = Quaternion(0.312501, 0.217043, 0.222055, 0.897735)
+bones/29/rotation = Quaternion(0.312291, 0.216881, 0.222069, 0.897843)
 bones/29/scale = Vector3(1, 1, 1)
 bones/30/name = "Hand_L"
 bones/30/parent = 29
 bones/30/rest = Transform3D(0.979219, -0.202792, 6.39823e-07, 0.202391, 0.977291, -0.0627933, 0.0127332, 0.0614884, 0.998034, -0.0105587, -0.00409864, 0.21602)
 bones/30/enabled = true
 bones/30/position = Vector3(-0.0105586, -0.00409821, 0.216019)
-bones/30/rotation = Quaternion(-0.0354065, -0.195401, -0.514918, 0.833921)
+bones/30/rotation = Quaternion(-0.0354363, -0.195166, -0.514523, 0.834219)
 bones/30/scale = Vector3(1, 1, 1)
 bones/31/name = "Thumb_Proximal_L"
 bones/31/parent = 30
@@ -10142,6 +10152,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575948, 0)
 layers = 3
 light_energy = 0.35
 omni_range = 1.5
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_2hb64")
+volume_db = 1.5
+bus = &"SFX"
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_qsune")
+volume_db = -0.25
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_vov0p")
+bus = &"SFX"
+
+[node name="ReloadSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_vov0p")
+bus = &"SFX"
+
+[node name="HealSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_n8jjm")
+volume_db = 1.25
+bus = &"SFX"
+
+[node name="AmmoSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_b4k72")
+volume_db = 1.25
+bus = &"SFX"
 
 [connection signal="get_damage" from="." to="." method="_on_get_damage"]
 [connection signal="animation_finished" from="Head/AnimationTree" to="." method="_on_animation_tree_animation_finished"]

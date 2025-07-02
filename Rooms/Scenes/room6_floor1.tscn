@@ -575,6 +575,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, -
 
 [node name="Floor" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0376587, -3.03589, 0.00289917)
@@ -597,6 +598,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57874, -2.93585, 0)
 shape = SubResource("BoxShape3D_5l7h5")
 
 [node name="Blocks" type="StaticBody3D" parent="Barriers"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -1.49121, -3)
@@ -616,6 +618,7 @@ shape = SubResource("BoxShape3D_baexh")
 
 [node name="Wall" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25045, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.254547, -2.50613)
@@ -631,6 +634,7 @@ shape = SubResource("BoxShape3D_15ltt")
 
 [node name="Wall2" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.24955, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.254547, -2.50613)
@@ -646,6 +650,7 @@ shape = SubResource("BoxShape3D_15ltt")
 
 [node name="Wall3" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -0.0495484, 0, -4.2652)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.254547, -2.50613)
@@ -661,6 +666,7 @@ shape = SubResource("BoxShape3D_15ltt")
 
 [node name="Wall4" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -0.0495484, 0, 4.25029)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.254547, -2.50613)

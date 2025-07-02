@@ -1,5 +1,12 @@
 extends CharacterBody3D
 
+@onready var sounds: Dictionary[String, AudioStreamPlayer3D] = {
+	"death" : $Sounds/DeathSound,
+	"shoot" : $Sounds/ShootSound,
+	"hurt" : $Sounds/HurtSound,
+	"spawn" : $Sounds/SpawnSound
+}
+
 @onready var animator := $AnimationPlayer
 @onready var shooting_timer := $ShootingTimer
 @onready var projectile_spawn_point := $metarig_001/Skeleton3D/BoneAttachment3D/Gun/ProjectileSpawnPoint
@@ -12,6 +19,7 @@ var rotation_z
 var rotation_x
 
 func _ready():
+	sounds["spawn"].play()
 	rotation_z = global_rotation.z
 	rotation_x = global_rotation.x
 
@@ -41,12 +49,14 @@ func _on_player_checker_body_entered(body: Node3D) -> void:
 
 
 func _on_enemy_hp_damage():
+	sounds["hurt"].play()
 	player = PlayerData.player
 	prepare_to_shoot()
 
 
 func _on_enemy_hp_death():
 	$ShootingTimer.stop()
+	sounds["death"].play()
 	is_dead = true
 	$AnimationPlayer.play("death")
 	$BodyCollision.set_deferred("disabled", true)
@@ -68,4 +78,5 @@ func _on_shooting_timer_timeout():
 		player_pos.y += .4
 		var new_dir = player_pos - projectile_spawn_point.global_position 
 		projectile.velocity = new_dir
+		sounds["shoot"].play()
 		animator.play("shoot")

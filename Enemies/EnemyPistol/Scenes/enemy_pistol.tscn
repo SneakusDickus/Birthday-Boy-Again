@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c28yd82oyufll"]
+[gd_scene load_steps=28 format=4 uid="uid://c28yd82oyufll"]
 
 [ext_resource type="Script" uid="uid://uo75fd3x36p8" path="res://Enemies/EnemyPistol/Script/enemy_pistol.gd" id="1_i80fr"]
 [ext_resource type="Shader" uid="uid://nqis6axq1ekb" path="res://Rooms/Shaders/psx.gdshader" id="2_ackos"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" uid="uid://d6mn8yl8eagl" path="res://Enemies/CoomonEnemyScript/enemy_collider.gd" id="3_unu5v"]
 [ext_resource type="PackedScene" uid="uid://crh6bs4ujmqu1" path="res://Enemies/CommonEnemyScene/enemy_hp.tscn" id="3_wi3e6"]
 [ext_resource type="PackedScene" uid="uid://crnfjc42vdxrl" path="res://Enemies/ItemDrop/Scene/item_dropper.tscn" id="6_s2m6m"]
+[ext_resource type="AudioStream" uid="uid://y1gxl512ujjg" path="res://Sounds/bba_concept_sfx/enemy_death.ogg" id="7_q0vve"]
+[ext_resource type="AudioStream" uid="uid://biruhiyps26bl" path="res://Sounds/bba_concept_sfx/enemy_gunshot.ogg" id="8_xw0hd"]
+[ext_resource type="AudioStream" uid="uid://nhd8e4vwaggw" path="res://Sounds/bba_concept_sfx/enemy_hurt.ogg" id="9_hdtyr"]
+[ext_resource type="AudioStream" uid="uid://gopuejq1ovs" path="res://Sounds/bba_concept_sfx/enemy_spawn.ogg" id="10_xw0hd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_848o2"]
 radius = 0.181296
@@ -2054,6 +2058,28 @@ enemy_head_area = NodePath("../metarig_001/Skeleton3D/EnemyHead/Node3D/EnemyHead
 
 [node name="ItemDropper" parent="." node_paths=PackedStringArray("enemy_hp_node") instance=ExtResource("6_s2m6m")]
 enemy_hp_node = NodePath("../EnemyHp")
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("7_q0vve")
+volume_db = 1.25
+bus = &"SFX"
+
+[node name="ShootSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("8_xw0hd")
+volume_db = -1.25
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("9_hdtyr")
+volume_db = 1.75
+bus = &"SFX"
+
+[node name="SpawnSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("10_xw0hd")
+volume_db = 1.75
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]

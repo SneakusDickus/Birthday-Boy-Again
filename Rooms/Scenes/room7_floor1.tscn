@@ -778,6 +778,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.6, -
 
 [node name="Floor" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.94406, 0)
@@ -852,6 +853,7 @@ shape = SubResource("BoxShape3D_wegnu")
 
 [node name="Wall" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2487, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00213623, 2.25556, 0)
@@ -867,6 +869,7 @@ shape = SubResource("BoxShape3D_f5ku7")
 
 [node name="Wall2" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(-1, -3.82137e-15, -8.74228e-08, 3.82137e-15, 1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, -4.2513, 0, 0)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00213623, 2.25556, 0)
@@ -882,6 +885,7 @@ shape = SubResource("BoxShape3D_f5ku7")
 
 [node name="Wall3" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(1.31134e-07, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, 1.31134e-07, -0.0512948, 0, 4.25581)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00213623, 2.25556, 0)
@@ -897,6 +901,7 @@ shape = SubResource("BoxShape3D_f5ku7")
 
 [node name="Wall4" type="StaticBody3D" parent="Barriers"]
 transform = Transform3D(-2.18557e-07, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -2.18557e-07, 0.00411248, 0, -4.25158)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barriers/Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00213623, 2.25556, 0)

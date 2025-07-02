@@ -101,10 +101,8 @@ func preapre_level_to_fight() -> void:
 	for spawn in spawn_points:
 		var enemy = enemies_inst[spawn.enemy_type].instantiate()
 		enemy_node.add_child(enemy)
-		print(enemy.global_position)
 		enemy.global_position = spawn.global_position
 		enemy.global_rotation = spawn.global_rotation  
-		print(enemy.global_position)
 
 
 func _on_room_area_body_entered(body: Node3D) -> void:
@@ -115,6 +113,5 @@ func _on_room_area_body_entered(body: Node3D) -> void:
 
 
 func _on_enemies_child_exiting_tree(node: Node) -> void:
-	print(len(enemy_node.get_children()))
 	if len(enemy_node.get_children()) <= 1:
 		_change_door_state()
