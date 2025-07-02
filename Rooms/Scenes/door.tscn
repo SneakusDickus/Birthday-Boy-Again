@@ -73,21 +73,6 @@ shadow_mesh = SubResource("ArrayMesh_hjoig")
 [sub_resource type="BoxShape3D" id="BoxShape3D_8orpe"]
 size = Vector3(3.95618, 2.03381, 0.272461)
 
-[sub_resource type="Animation" id="Animation_8orpe"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("brick_wall:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.7, 0, 0), Vector3(-0.7, -4.1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_t0mn5"]
 length = 0.001
 tracks/0/type = "value"
@@ -116,6 +101,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.7, -4.1, 0), Vector3(-0.7, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8orpe"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("brick_wall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.7, 0, 0), Vector3(-0.7, -4.1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yr3m0"]

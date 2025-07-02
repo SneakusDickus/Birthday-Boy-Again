@@ -7,7 +7,6 @@ extends CharacterBody3D
 @onready var particle_fire := $Head/Vfx/Fire
 
 signal get_damage(damage: int)
-signal get_heal
 
 enum {
 	IDLE,

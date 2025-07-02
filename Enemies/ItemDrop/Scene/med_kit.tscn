@@ -55,7 +55,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fqjkv")
 
 [node name="MedKit" type="MeshInstance3D"]
-transform = Transform3D(1.99709, -0.0871822, -0.0634789, 0.0235548, -0.796191, 1.83454, -0.10524, -1.83262, -0.793999, 0, 0, 0)
+transform = Transform3D(1.49782, -0.0653865, -0.0476092, 0.0176661, -0.597142, 1.3759, -0.07893, -1.37446, -0.595503, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_hw34y")
 mesh = SubResource("ArrayMesh_0ppn3")
 skeleton = NodePath("")

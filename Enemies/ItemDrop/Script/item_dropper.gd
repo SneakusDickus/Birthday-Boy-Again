@@ -22,9 +22,9 @@ func item_randomize() -> void:
 	
 	if item_type == "null":
 		var chance = randi_range(1, 101)
-		if chance in range(1, 20):
+		if chance in range(1, 35):
 			item_type = "ammo"
-		elif chance in range(21, 101):
+		elif chance in range(36, 50):
 			item_type = "med_kit"
 
 

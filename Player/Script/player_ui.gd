@@ -26,12 +26,16 @@ func _process(delta):
 		+ "/" + str(PlayerData.current_ammo)
 	
 	# vingette animation
+	update_vignette()
 
 
-func _on_player_get_damage(damage: int) -> void:
+func update_vignette() -> void:
 	var player_hp_percent = (max_player_hp - PlayerData.hp) * 100 / max_player_hp
 	var current_vignette = 2.5 * player_hp_percent / 100
 	vignette.material["shader_parameter/vignette_intensity"] = current_vignette
+
+
+func _on_player_get_damage(damage: int) -> void:
 	if PlayerData.hp <= 0:
 		animator.play("death_screen")
 

@@ -3,6 +3,6 @@
 [ext_resource type="ArrayMesh" uid="uid://brndn102ao52e" path="res://Enemies/ItemDrop/Models/PSXAmmoBoxes/9mm/9mm_240.obj" id="1_5ilp5"]
 
 [node name="Ammo" type="MeshInstance3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.377521, -0.327838, 0, 0.327838, 0.377521, 0, 0, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.264265, -0.229487, 0, 0.229487, 0.264265, 0, 0, 0)
 mesh = ExtResource("1_5ilp5")
 skeleton = NodePath("../..")
